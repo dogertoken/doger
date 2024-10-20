@@ -680,7 +680,7 @@
                                             color: "",
                                             fontSize: "30px"
                                         },
-                                        children: "Pepex Presale"
+                                        children: "Doger Presale"
                                     }), Object(h.jsx)("h3", {
                                         
                                     }), ]
@@ -714,7 +714,7 @@
                                                 color: "#3f4c3d",
                                                 fontFamily: "Secular One",
                                                 textAlign: "center",
-                                                children: "Buy Pepex Token"
+                                                children: "Buy Doger Token"
                                             }), Object(h.jsxs)(u.a, {
                                                 mt: 2,
                                                 mb: 2,
@@ -854,7 +854,7 @@
                                                             height: "20px",
                                                             src: N,
                                                             alt: ""
-                                                        }), " ", "PEPEX"]
+                                                        }), " ", "DOGER"]
                                                     })]
                                                 })]
                                             }), Object(h.jsx)(u.a, {
@@ -967,7 +967,7 @@
                                                     fontSize: "16px",
                                                     color: "#3f4c3d",
                                                     fontFamily: "Chakra Petch",
-                                                    children: "100B"
+                                                    children: "100.000.000.000"
                                                 })]
                                             }), Object(h.jsxs)(u.a, {
                                                 display: "flex",
@@ -989,7 +989,7 @@
                                                     fontSize: "16px",
                                                     color: "#3f4c3d",
                                                     fontFamily: "Chakra Petch",
-                                                    children: "1000000000"
+                                                    children: "1.000.000.000"
                                                 })]
                                             }), Object(h.jsxs)(u.a, {
                                                 display: "flex",
@@ -1045,7 +1045,7 @@
                             children: [Object(h.jsx)("h2", {
                                 className: "h2_class",
                                 id: "Howto_buy",
-                                children: "HOW TO BUY"
+                                children: ""
                             }), Object(h.jsx)("div", {
                                 className: "How_details",
                                 children: Object(h.jsxs)(B.a, {
@@ -1059,7 +1059,7 @@
                                         md: 6,
                                         lg: 6,
                                         children: [Object(h.jsx)("h3", {
-                                            children: "Desktop View"
+                                            children: ""
                                         }), Object(h.jsxs)("div", {
                                             className: "desktop_view",
                                             children: [Object(h.jsx)("p", {
@@ -1070,26 +1070,26 @@
                                                 },
                                                 children: "Step 1"
                                             }), Object(h.jsxs)("ul", {
-                                                children: [Object(h.jsxs)("li", {
-                                                    children: ["Click on ", Object(h.jsx)("em", {
+                                                children: [Object(h.jsxs)("", {
+                                                    children: ["", Object(h.jsx)("em", {
                                                         children: Object(h.jsx)("quote", {
-                                                            children: "'Connect'"
+                                                            children: ""
                                                         })
                                                     })]
-                                                }), Object(h.jsxs)("li", {
-                                                    children: ["Choose the wallet where you have your BNB funds, ", Object(h.jsx)("em", {
-                                                        children: "Metamask or WalletConnect"
+                                                }), Object(h.jsxs)("", {
+                                                    children: ["", Object(h.jsx)("em", {
+                                                        children: ""
                                                     })]
-                                                }), Object(h.jsxs)("li", {
-                                                    children: ["When prompted, click on ", Object(h.jsx)("em", {
+                                                }), Object(h.jsxs)("", {
+                                                    children: ["", Object(h.jsx)("em", {
                                                         children: "confirm."
                                                     })]
-                                                }), Object(h.jsx)("li", {
-                                                    children: "Enter the amount of BNB you want to buy "
+                                                }), Object(h.jsx)("", {
+                                                    children: ""
                                                 })]
                                             })]
-                                        }), Object(h.jsx)("img", {
-                                            src: E,
+                                        }), Object(h.jsx)("", {
+                                            src: ,
                                             width: "600px",
                                             height: "300px"
                                         })]
@@ -1100,7 +1100,7 @@
                                         md: 6,
                                         lg: 6,
                                         children: [Object(h.jsx)("h3", {
-                                            children: "Mobile"
+                                            children: ""
                                         }), Object(h.jsxs)("div", {
                                             className: "desktop_view",
                                             children: [Object(h.jsx)("p", {
@@ -1109,7 +1109,7 @@
                                                     paddingLeft: "40px",
                                                     fontSize: "20px"
                                                 },
-                                                children: "Step 1"
+                                                children: ""
                                             }), Object(h.jsx)("p", {
                                                 style: {
                                                     textAlign: "left",
@@ -1117,7 +1117,7 @@
                                                     fontSize: "20px",
                                                     color: "white"
                                                 },
-                                                children: "Follow up with the steps explained in Desktop View. "
+                                                children: ""
                                             }), Object(h.jsx)("p", {
                                                 style: {
                                                     textAlign: "left",
@@ -1125,7 +1125,7 @@
                                                     fontSize: "20px",
                                                     color: "white"
                                                 },
-                                                children: "If you have any challenge connecting to Trustwallet, follow this step 2."
+                                                children: ""
                                             }), Object(h.jsx)("p", {
                                                 style: {
                                                     textAlign: "left",
@@ -1135,34 +1135,34 @@
                                                 },
                                                 children: "Step 2"
                                             }), Object(h.jsxs)("ul", {
-                                                children: [Object(h.jsxs)("li", {
-                                                    children: ["Go to your ", Object(h.jsx)("em", {
+                                                children: [Object(h.jsxs)("", {
+                                                    children: ["", Object(h.jsx)("em", {
                                                         children: Object(h.jsx)("b", {
-                                                            children: "Trustwallet"
+                                                            children: ""
                                                         })
-                                                    }), "  click on ", Object(h.jsx)("em", {
+                                                    }), "", Object(h.jsx)("em", {
                                                         children: Object(h.jsx)("b", {
-                                                            children: "Discover"
+                                                            children: ""
                                                         })
                                                     })]
-                                                }), Object(h.jsxs)("li", {
-                                                    children: ["At the ", Object(h.jsx)("a", {
+                                                }), Object(h.jsxs)("", {
+                                                    children: ["", Object(h.jsx)("a", {
                                                         href: ""
                                                     }), Object(h.jsx)("em", {
                                                         children: Object(h.jsx)("b", {
-                                                            children: "PEPEX Coin Website"
+                                                            children: ""
                                                         })
-                                                    }), ". a prompt shows, choose network and click ", Object(h.jsx)("em", {
+                                                    }), "", Object(h.jsx)("em", {
                                                         children: Object(h.jsx)("b", {
-                                                            children: "Connect"
+                                                            children: ""
                                                         })
                                                     })]
-                                                }), Object(h.jsxs)("li", {
-                                                    children: ["When prompted, click on ", Object(h.jsx)("em", {
-                                                        children: "confirm."
+                                                }), Object(h.jsxs)("", {
+                                                    children: ["", Object(h.jsx)("em", {
+                                                        children: ""
                                                     })]
-                                                }), Object(h.jsx)("li", {
-                                                    children: "Once connected, enter the amount of PEPEX Coin you want to buy with BNB "
+                                                }), Object(h.jsx)("", {
+                                                    children: ""
                                                 })]
                                             })]
                                         })]
