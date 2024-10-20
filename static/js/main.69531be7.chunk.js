@@ -696,7 +696,7 @@
                                         children: Object(h.jsxs)(u.a, {
                                             width: "100%",
                                             height: "100%",
-                                            boxShadow: "#D2691E 0px 0px 10px 1px",
+                                            boxShadow: "#FF8C00 0px 0px 10px 1px",
                                             style: {
                                                 background: "#4d4d4d"
                                             },
@@ -776,9 +776,9 @@
                                                             fontWeight: "500",
                                                             fontSize: "16px",
                                                             marginTop: "10px",
-                                                            background: "#4d4d4d",
+                                                            background: "#666666",
                                                             boxShadow: "#487748 0px 0px 8px 1px",
-                                                            borderBottom: "5px solid #FF8C00"
+                                                            borderBottom: "5px solid #32CD32"
                                                         },
                                                         children: [" ", Object(h.jsx)("img", {
                                                             style: {
@@ -842,8 +842,8 @@
                                                             fontSize: "16px",
                                                             marginTop: "10px",
                                                             boxShadow: "#487748 0px 0px 8px 1px",
-                                                            background: "#4d4d4d",
-                                                            borderBottom: "5px solid #FF8C00"
+                                                            background: "#666666",
+                                                            borderBottom: "5px solid #32CD32"
                                                         },
                                                         children: [" ", Object(h.jsx)("img", {
                                                             style: {
@@ -867,7 +867,7 @@
                                                     children: Object(h.jsx)(P.a, {
                                                         style: (e = {
                                                             background: "transparent"
-                                                        }, Object(S.a)(e, "background", "#2E8B57"), Object(S.a)(e, "boxShadow", "#487748 0px 0px 8px 1px"), Object(S.a)(e, "fontSize", "18px"), Object(S.a)(e, "borderRadius", "0px"), Object(S.a)(e, "width", "176px"), Object(S.a)(e, "height", "45px"), Object(S.a)(e, "color", "#ffffff"), Object(S.a)(e, "textTransform", "capitalize"), Object(S.a)(e, "fontWeight", "500"), Object(S.a)(e, "borderBottom", "5px solid #FF8C00"), e),
+                                                        }, Object(S.a)(e, "background", "#32CD32"), Object(S.a)(e, "boxShadow", "#487748 0px 0px 8px 1px"), Object(S.a)(e, "fontSize", "18px"), Object(S.a)(e, "borderRadius", "0px"), Object(S.a)(e, "width", "176px"), Object(S.a)(e, "height", "45px"), Object(S.a)(e, "color", "#ffffff"), Object(S.a)(e, "textTransform", "capitalize"), Object(S.a)(e, "fontWeight", "500"), Object(S.a)(e, "borderBottom", "5px solid #FF8C00"), e),
                                                         onClick: function() {
                                                             return V()
                                                         },
