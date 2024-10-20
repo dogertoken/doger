@@ -672,7 +672,7 @@
                                     mb: 2,
                                     fontWeight: "700",
                                     fontSize: "25px",
-                                    color: "#3f4c3d",
+                                    color: "#FF8C00",
                                     fontFamily: "Segoe UI Black",
                                     textAlign: "center",
                                     children: [Object(h.jsx)("h3", {
@@ -711,7 +711,7 @@
                                             children: [Object(h.jsx)(u.a, {
                                                 fontWeight: "700",
                                                 fontSize: "25px",
-                                                color: "#cccccc",
+                                                color: "#e6e6e6",
                                                 fontFamily: "Secular One",
                                                 textAlign: "center",
                                                 children: "Buy Doger Token"
