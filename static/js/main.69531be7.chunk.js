@@ -728,7 +728,7 @@
                                                 pt: 1,
                                                 children: [Object(h.jsxs)(u.a, {
                                                     style: {
-                                                        color: "#3f4c3d",
+                                                        color: "#e6e6e6",
                                                         fontFamily: "Chakra Petch",
                                                         fontWeight: "500",
                                                         fontSize: "18px",
@@ -744,7 +744,7 @@
                                                     alignItems: "center",
                                                     children: [Object(h.jsx)(F.a, {
                                                         style: {
-                                                            color: "#3f4c3d",
+                                                            color: "#e6e6e6",
                                                             fontFamily: "Chakra Petch",
                                                             fontWeight: "600",
                                                             fontSize: "18px",
@@ -771,7 +771,7 @@
                                                         py: 1,
                                                         mr: 2,
                                                         style: {
-                                                            color: "#3f4c3d",
+                                                            color: "#e6e6e6",
                                                             fontFamily: "Chakra Petch",
                                                             fontWeight: "500",
                                                             fontSize: "16px",
@@ -806,7 +806,7 @@
                                                 children: [Object(h.jsxs)(u.a, {
                                                     mb: 1,
                                                     style: {
-                                                        color: "#3f4c3d",
+                                                        color: "#e6e6e6",
                                                         fontFamily: "Chakra Petch",
                                                         fontWeight: "500",
                                                         fontSize: "18px",
@@ -822,7 +822,7 @@
                                                     children: [Object(h.jsx)("span", {
                                                         style: {
                                                             fontSize: "18px",
-                                                            color: "#3f4c3d",
+                                                            color: "#e6e6e6",
                                                             fontFamily: "Chakra Petch"
                                                         },
                                                         className: "heading",
@@ -836,7 +836,7 @@
                                                         pr: r ? 2 : 4,
                                                         py: 1,
                                                         style: {
-                                                            color: "#3f4c3d",
+                                                            color: "#e6e6e6",
                                                             fontFamily: "Chakra Petch",
                                                             fontWeight: "500",
                                                             fontSize: "16px",
@@ -867,7 +867,7 @@
                                                     children: Object(h.jsx)(P.a, {
                                                         style: (e = {
                                                             background: "transparent"
-                                                        }, Object(S.a)(e, "background", "#32CD32"), Object(S.a)(e, "boxShadow", "#487748 0px 0px 8px 1px"), Object(S.a)(e, "fontSize", "18px"), Object(S.a)(e, "borderRadius", "0px"), Object(S.a)(e, "width", "176px"), Object(S.a)(e, "height", "45px"), Object(S.a)(e, "color", "#ffffff"), Object(S.a)(e, "textTransform", "capitalize"), Object(S.a)(e, "fontWeight", "500"), Object(S.a)(e, "borderBottom", "5px solid #FF8C00"), e),
+                                                        }, Object(S.a)(e, "background", "#32CD32"), Object(S.a)(e, "boxShadow", "#FF8C00 0px 0px 8px 1px"), Object(S.a)(e, "fontSize", "18px"), Object(S.a)(e, "borderRadius", "0px"), Object(S.a)(e, "width", "176px"), Object(S.a)(e, "height", "45px"), Object(S.a)(e, "color", "#ffffff"), Object(S.a)(e, "textTransform", "capitalize"), Object(S.a)(e, "fontWeight", "500"), Object(S.a)(e, "borderBottom", "5px solid #FF8C00"), e),
                                                         onClick: function() {
                                                             return V()
                                                         },
