@@ -1150,7 +1150,7 @@
                                                         href: ""
                                                     }), Object(h.jsx)("em", {
                                                         children: Object(h.jsx)("b", {
-                                                            children: "PEPEX Coin Website"
+                                                            children: "Doger Website"
                                                         })
                                                     }), ". a prompt shows, choose network and click ", Object(h.jsx)("em", {
                                                         children: Object(h.jsx)("b", {
@@ -1162,7 +1162,7 @@
                                                         children: "confirm."
                                                     })]
                                                 }), Object(h.jsx)("li", {
-                                                    children: "Once connected, enter the amount of PEPEX Coin you want to buy with BNB "
+                                                    children: "Once connected, enter the amount of Doger Token you want to buy with BNB "
                                                 })]
                                             })]
                                         })]
