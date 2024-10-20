@@ -696,7 +696,7 @@
                                         children: Object(h.jsxs)(u.a, {
                                             width: "100%",
                                             height: "100%",
-                                            boxShadow: "#FF8C00 0px 0px 10px 1px",
+                                            boxShadow: "#b36200 0px 0px 10px 1px",
                                             style: {
                                                 background: "#4d4d4d"
                                             },
@@ -884,7 +884,7 @@
                                         children: Object(h.jsxs)(u.a, {
                                             width: "100%",
                                             height: "100%",
-                                            boxShadow: "#487748 0px 0px 10px 1px",
+                                            boxShadow: "#b36200 0px 0px 10px 1px",
                                             style: {
                                                 background: "#4d4d4d"
                                             },
