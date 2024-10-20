@@ -719,7 +719,7 @@
                                                 mt: 2,
                                                 mb: 2,
                                                 style: {
-                                                    boxShadow: "#FF8C00 0px 0px 8px 1px",
+                                                    boxShadow: "#1a1a1a 0px 0px 8px 1px",
                                                     background: "#333333",
                                                     paddingLeft: 15,
                                                     borderRadius: "0px"
@@ -796,7 +796,7 @@
                                                 display: "flex",
                                                 flexDirection: "column",
                                                 style: {
-                                                    boxShadow: "#FF8C00 0px 0px 8px 1px",
+                                                    boxShadow: "#1a1a1a 0px 0px 8px 1px",
                                                     backgroundColor: "#333333",
                                                     borderRadius: "0px",
                                                     marginTop: 10
