@@ -720,7 +720,7 @@
                                                 mb: 2,
                                                 style: {
                                                     boxShadow: "#487748 0px 0px 8px 1px",
-                                                    background: "#1a1a1a",
+                                                    background: "#333333",
                                                     paddingLeft: 15,
                                                     borderRadius: "0px"
                                                 },
@@ -776,9 +776,9 @@
                                                             fontWeight: "500",
                                                             fontSize: "16px",
                                                             marginTop: "10px",
-                                                            background: "#bfeeb8",
+                                                            background: "#4d4d4d",
                                                             boxShadow: "#487748 0px 0px 8px 1px",
-                                                            borderBottom: "5px solid #DEB887"
+                                                            borderBottom: "5px solid #32CD32"
                                                         },
                                                         children: [" ", Object(h.jsx)("img", {
                                                             style: {
@@ -797,7 +797,7 @@
                                                 flexDirection: "column",
                                                 style: {
                                                     boxShadow: "#487748 0px 0px 8px 1px",
-                                                    backgroundColor: "#bfeeb8",
+                                                    backgroundColor: "#4d4d4d",
                                                     borderRadius: "0px",
                                                     marginTop: 10
                                                 },
@@ -842,8 +842,8 @@
                                                             fontSize: "16px",
                                                             marginTop: "10px",
                                                             boxShadow: "#487748 0px 0px 8px 1px",
-                                                            background: "#bfeeb8",
-                                                            borderBottom: "5px solid #DEB887"
+                                                            background: "#4d4d4d",
+                                                            borderBottom: "5px solid #32CD32"
                                                         },
                                                         children: [" ", Object(h.jsx)("img", {
                                                             style: {
