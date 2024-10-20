@@ -696,9 +696,9 @@
                                         children: Object(h.jsxs)(u.a, {
                                             width: "100%",
                                             height: "100%",
-                                            boxShadow: "#487748 0px 0px 10px 1px",
+                                            boxShadow: "#FF8C00 0px 0px 10px 1px",
                                             style: {
-                                                background: "#90ee90"
+                                                background: "#4d4d4d"
                                             },
                                             borderRadius: "0px",
                                             borderTop: "20px solid #333333",
@@ -776,9 +776,9 @@
                                                             fontWeight: "500",
                                                             fontSize: "16px",
                                                             marginTop: "10px",
-                                                            background: "#4d4d4d",
+                                                            background: "#808080",
                                                             boxShadow: "#487748 0px 0px 8px 1px",
-                                                            borderBottom: "5px solid #32CD32"
+                                                            borderBottom: "5px solid #FF8C00"
                                                         },
                                                         children: [" ", Object(h.jsx)("img", {
                                                             style: {
@@ -797,7 +797,7 @@
                                                 flexDirection: "column",
                                                 style: {
                                                     boxShadow: "#487748 0px 0px 8px 1px",
-                                                    backgroundColor: "#4d4d4d",
+                                                    backgroundColor: "#666666",
                                                     borderRadius: "0px",
                                                     marginTop: 10
                                                 },
@@ -842,8 +842,8 @@
                                                             fontSize: "16px",
                                                             marginTop: "10px",
                                                             boxShadow: "#487748 0px 0px 8px 1px",
-                                                            background: "#4d4d4d",
-                                                            borderBottom: "5px solid #32CD32"
+                                                            background: "#808080",
+                                                            borderBottom: "5px solid #FF8C00"
                                                         },
                                                         children: [" ", Object(h.jsx)("img", {
                                                             style: {
