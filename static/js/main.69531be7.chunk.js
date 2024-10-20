@@ -711,7 +711,7 @@
                                             children: [Object(h.jsx)(u.a, {
                                                 fontWeight: "700",
                                                 fontSize: "25px",
-                                                color: "#3f4c3d",
+                                                color: "#FF8C00",
                                                 fontFamily: "Secular One",
                                                 textAlign: "center",
                                                 children: "Buy Doger Token"
@@ -719,7 +719,7 @@
                                                 mt: 2,
                                                 mb: 2,
                                                 style: {
-                                                    boxShadow: "#487748 0px 0px 8px 1px",
+                                                    boxShadow: "#FF8C00 0px 0px 8px 1px",
                                                     background: "#333333",
                                                     paddingLeft: 15,
                                                     borderRadius: "0px"
@@ -777,7 +777,7 @@
                                                             fontSize: "16px",
                                                             marginTop: "10px",
                                                             background: "#666666",
-                                                            boxShadow: "#487748 0px 0px 8px 1px",
+                                                            boxShadow: "#FF8C00 0px 0px 8px 1px",
                                                             borderBottom: "5px solid #32CD32"
                                                         },
                                                         children: [" ", Object(h.jsx)("img", {
@@ -796,7 +796,7 @@
                                                 display: "flex",
                                                 flexDirection: "column",
                                                 style: {
-                                                    boxShadow: "#487748 0px 0px 8px 1px",
+                                                    boxShadow: "#FF8C00 0px 0px 8px 1px",
                                                     backgroundColor: "#333333",
                                                     borderRadius: "0px",
                                                     marginTop: 10
@@ -841,7 +841,7 @@
                                                             fontWeight: "500",
                                                             fontSize: "16px",
                                                             marginTop: "10px",
-                                                            boxShadow: "#487748 0px 0px 8px 1px",
+                                                            boxShadow: "#FF8C00 0px 0px 8px 1px",
                                                             background: "#666666",
                                                             borderBottom: "5px solid #32CD32"
                                                         },
