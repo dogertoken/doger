@@ -264,7 +264,6 @@
             }
             var N = "static/media/logo.png",
                 L = "static/media/logo.png",
-                E = "static/media/doger.jpg",
                 D = "static/media/bnblogo.95c82668.svg",
                 q = n(642),
                 V = n(587),
@@ -1088,11 +1087,6 @@
                                                     children: "Enter the amount of BNB you want to buy "
                                                 })]
                                             })]
-                                        }), Object(h.jsx)("img", {
-                                            src: E,
-                                            width: "600px",
-                                            height: "300px"
-                                        })]
                                     }), Object(h.jsxs)(B.a, {
                                         item: !0,
                                         xs: 12,
