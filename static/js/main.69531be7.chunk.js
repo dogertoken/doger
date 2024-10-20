@@ -566,7 +566,7 @@
                                     for (;;) switch (e.prev = e.next) {
                                         case 0:
                                             try {
-                                                O(t = 1000000 * +b), console.log(t, "tokenReceive")
+                                                O(t = 1000000000 * +b), console.log(t, "tokenReceive")
                                             } catch (n) {}
                                         case 1:
                                         case "end":
