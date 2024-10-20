@@ -696,7 +696,7 @@
                                         children: Object(h.jsxs)(u.a, {
                                             width: "100%",
                                             height: "100%",
-                                            boxShadow: "#b36200 0px 0px 10px 1px",
+                                            boxShadow: "#FF8C00 0px 0px 10px 1px",
                                             style: {
                                                 background: "#4d4d4d"
                                             },
@@ -777,7 +777,7 @@
                                                             fontSize: "16px",
                                                             marginTop: "10px",
                                                             background: "#666666",
-                                                            boxShadow: "#D2691E 0px 0px 8px 1px",
+                                                            boxShadow: "#b36200 0px 0px 8px 1px",
                                                             borderBottom: "5px solid #32CD32"
                                                         },
                                                         children: [" ", Object(h.jsx)("img", {
@@ -841,7 +841,7 @@
                                                             fontWeight: "500",
                                                             fontSize: "16px",
                                                             marginTop: "10px",
-                                                            boxShadow: "#D2691E 0px 0px 8px 1px",
+                                                            boxShadow: "#b36200 0px 0px 8px 1px",
                                                             background: "#666666",
                                                             borderBottom: "5px solid #32CD32"
                                                         },
@@ -884,7 +884,7 @@
                                         children: Object(h.jsxs)(u.a, {
                                             width: "100%",
                                             height: "100%",
-                                            boxShadow: "#b36200 0px 0px 10px 1px",
+                                            boxShadow: "#FF8C00 0px 0px 10px 1px",
                                             style: {
                                                 background: "#4d4d4d"
                                             },
