@@ -221,9 +221,9 @@
                                     zIndex: 1,
                                     style: {
                                         cursor: "pointer",
-                                        boxShadow: "#487748 0px 0px 8px 1px",
-                                        background: "#7B68EE",
-                                        borderBottom: "5px solid #DEB887"
+                                        boxShadow: "#808080 0px 0px 8px 1px",
+                                        background: "#FF8C00",
+                                        borderBottom: "5px solid #32CD32"
                                     },
                                     width: "130px",
                                     height: "42px",
