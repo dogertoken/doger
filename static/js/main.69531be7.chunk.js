@@ -264,7 +264,7 @@
             }
             var N = "static/media/logo.png",
                 L = "static/media/logo.png",
-                E = "static/media/pepex.png",
+                E = "static/media/doger.jpg",
                 D = "static/media/bnblogo.95c82668.svg",
                 q = n(642),
                 V = n(587),
@@ -680,7 +680,7 @@
                                             color: "",
                                             fontSize: "30px"
                                         },
-                                        children: "Pepex Presale"
+                                        children: "Doger Presale"
                                     }), Object(h.jsx)("h3", {
                                         
                                     }), ]
@@ -714,7 +714,7 @@
                                                 color: "#3f4c3d",
                                                 fontFamily: "Secular One",
                                                 textAlign: "center",
-                                                children: "Buy Pepex Token"
+                                                children: "Buy Doger Token"
                                             }), Object(h.jsxs)(u.a, {
                                                 mt: 2,
                                                 mb: 2,
@@ -854,7 +854,7 @@
                                                             height: "20px",
                                                             src: N,
                                                             alt: ""
-                                                        }), " ", "PEPEX"]
+                                                        }), " ", "DOGER"]
                                                     })]
                                                 })]
                                             }), Object(h.jsx)(u.a, {
@@ -967,7 +967,7 @@
                                                     fontSize: "16px",
                                                     color: "#3f4c3d",
                                                     fontFamily: "Chakra Petch",
-                                                    children: "100B"
+                                                    children: "100.000.000.000"
                                                 })]
                                             }), Object(h.jsxs)(u.a, {
                                                 display: "flex",
@@ -989,7 +989,7 @@
                                                     fontSize: "16px",
                                                     color: "#3f4c3d",
                                                     fontFamily: "Chakra Petch",
-                                                    children: "1000000000"
+                                                    children: "1.000.000.000"
                                                 })]
                                             }), Object(h.jsxs)(u.a, {
                                                 display: "flex",
@@ -1004,7 +1004,7 @@
                                                     fontSize: "16px",
                                                     color: "#3f4c3d",
                                                     fontFamily: "Chakra Petch",
-                                                    children: "Min Contribute"
+                                                    children: "Min Buy"
                                                 }), Object(h.jsxs)(u.a, {
                                                     fontWeight: "600",
                                                     borderRadius: "8px",
@@ -1026,7 +1026,7 @@
                                                     fontSize: "16px",
                                                     color: "#3f4c3d",
                                                     fontFamily: "Chakra Petch",
-                                                    children: "Max Contribute"
+                                                    children: "Max Buy"
                                                 }), Object(h.jsxs)(u.a, {
                                                     fontWeight: "600",
                                                     borderRadius: "8px",
