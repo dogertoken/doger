@@ -616,7 +616,7 @@
                                             e.next = 17;
                                             break
                                         }
-                                        Y.b.error("Error! Minimum amount is 0.01 BNB"), e.next = 38;
+                                        Y.b.error("Error! Minimum amount is 0.1 BNB"), e.next = 38;
                                         break;
                                     case 17:
                                         if (!(0 !== +b && +b > 200)) {
@@ -923,7 +923,7 @@
                                                     fontSize: "16px",
                                                     color: "#3f4c3d",
                                                     fontFamily: "Chakra Petch",
-                                                    children: "PepeX"
+                                                    children: "Doger"
                                                 })]
                                             }), Object(h.jsxs)(u.a, {
                                                 display: "flex",
@@ -945,7 +945,7 @@
                                                     fontSize: "16px",
                                                     color: "#3f4c3d",
                                                     fontFamily: "Chakra Petch",
-                                                    children: "PEPEX"
+                                                    children: "DOGER"
                                                 })]
                                             }), Object(h.jsxs)(u.a, {
                                                 display: "flex",
@@ -960,14 +960,14 @@
                                                     fontSize: "16px",
                                                     color: "#3f4c3d",
                                                     fontFamily: "Chakra Petch",
-                                                    children: "Token Decimals"
+                                                    children: "Token Supply"
                                                 }), Object(h.jsx)(u.a, {
                                                     fontWeight: "600",
                                                     borderRadius: "8px",
                                                     fontSize: "16px",
                                                     color: "#3f4c3d",
                                                     fontFamily: "Chakra Petch",
-                                                    children: "18"
+                                                    children: "100B"
                                                 })]
                                             }), Object(h.jsxs)(u.a, {
                                                 display: "flex",
@@ -989,7 +989,7 @@
                                                     fontSize: "16px",
                                                     color: "#3f4c3d",
                                                     fontFamily: "Chakra Petch",
-                                                    children: "1000000"
+                                                    children: "1000000000"
                                                 })]
                                             }), Object(h.jsxs)(u.a, {
                                                 display: "flex",
@@ -1011,7 +1011,7 @@
                                                     fontSize: "16px",
                                                     color: "#3f4c3d",
                                                     fontFamily: "Chakra Petch",
-                                                    children: ["0.01 BNB", " "]
+                                                    children: ["0.1 BNB", " "]
                                                 })]
                                             }), Object(h.jsxs)(u.a, {
                                                 display: "flex",
