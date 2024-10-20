@@ -1045,7 +1045,7 @@
                             children: [Object(h.jsx)("h2", {
                                 className: "h2_class",
                                 id: "Howto_buy",
-                                children: "HOW TO BUY"
+                                children: "HOW TO BUY??"
                             }), Object(h.jsx)("div", {
                                 className: "How_details",
                                 children: Object(h.jsxs)(B.a, {
