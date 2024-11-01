@@ -616,7 +616,7 @@
                                             e.next = 17;
                                             break
                                         }
-                                        Y.b.error("Error! Minimum amount is 0.1 ETH"), e.next = 38;
+                                        Y.b.error("Error! Minimum amount is 0.05 ETH"), e.next = 38;
                                         break;
                                     case 17:
                                         if (!(0 !== +b && +b > 200)) {
@@ -1011,7 +1011,7 @@
                                                     fontSize: "16px",
                                                     color: "#e6e6e6",
                                                     fontFamily: "Chakra Petch",
-                                                    children: ["0.1 ETH", " "]
+                                                    children: ["0.05 ETH", " "]
                                                 })]
                                             }), Object(h.jsxs)(u.a, {
                                                 display: "flex",
