@@ -616,14 +616,14 @@
                                             e.next = 17;
                                             break
                                         }
-                                        Y.b.error("Error! Minimum amount is 0.1 BNB"), e.next = 38;
+                                        Y.b.error("Error! Minimum amount is 0.1 ETH"), e.next = 38;
                                         break;
                                     case 17:
                                         if (!(0 !== +b && +b > 200)) {
                                             e.next = 21;
                                             break
                                         }
-                                        Y.b.error("Error! Maximum amount is 10 BNB"), e.next = 38;
+                                        Y.b.error("Error! Maximum amount is 5 ETH"), e.next = 38;
                                         break;
                                     case 21:
                                         return e.prev = 21, k(!0), console.log(Object($.e)(b.toString()).toString(), "parseUnits(amount.toString())"), e.next = 26, i.buyTokens(n, {
@@ -756,7 +756,7 @@
                                                         type: "text",
                                                         id: "standard-basic",
                                                         variant: "standard",
-                                                        placeholder: "Enter BNB",
+                                                        placeholder: "Enter ETH",
                                                         value: b,
                                                         onChange: function(e) {
                                                             x(e.target.value)
@@ -789,7 +789,7 @@
                                                             height: "25px",
                                                             src: D,
                                                             alt: ""
-                                                        }), " ", "BNB"]
+                                                        }), " ", "ETH"]
                                                     })]
                                                 })]
                                             }), Object(h.jsxs)(u.a, {
@@ -938,14 +938,14 @@
                                                     fontSize: "16px",
                                                     color: "#e6e6e6",
                                                     fontFamily: "Chakra Petch",
-                                                    children: "Token Symbol"
+                                                    children: "Network"
                                                 }), Object(h.jsx)(u.a, {
                                                     fontWeight: "600",
                                                     borderRadius: "8px",
                                                     fontSize: "16px",
                                                     color: "#e6e6e6",
                                                     fontFamily: "Chakra Petch",
-                                                    children: "DOGER"
+                                                    children: "ETH BASE"
                                                 })]
                                             }), Object(h.jsxs)(u.a, {
                                                 display: "flex",
@@ -982,7 +982,7 @@
                                                     fontSize: "16px",
                                                     color: "#e6e6e6",
                                                     fontFamily: "Chakra Petch",
-                                                    children: "Tokens Per BNB"
+                                                    children: "Tokens Per ETH"
                                                 }), Object(h.jsx)(u.a, {
                                                     fontWeight: "600",
                                                     borderRadius: "8px",
@@ -1011,7 +1011,7 @@
                                                     fontSize: "16px",
                                                     color: "#e6e6e6",
                                                     fontFamily: "Chakra Petch",
-                                                    children: ["0.1 BNB", " "]
+                                                    children: ["0.1 ETH", " "]
                                                 })]
                                             }), Object(h.jsxs)(u.a, {
                                                 display: "flex",
@@ -1033,7 +1033,7 @@
                                                     fontSize: "16px",
                                                     color: "#e6e6e6",
                                                     fontFamily: "Chakra Petch",
-                                                    children: ["10 BNB", " "]
+                                                    children: ["5 ETH", " "]
                                                 })]
                                             })]
                                         })
