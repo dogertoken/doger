@@ -43,11 +43,11 @@
                     walletconnect: {
                         package: x.a,
                         options: {
-                            networkUrl: "https://bsc-dataseed.binance.org",
+                            networkUrl: "https://mainnet.base.org/",
                             rpc: {
-                                56: "https://bsc-dataseed.binance.org"
+                                8453: "https://mainnet.base.org/"
                             },
-                            chainId: 56
+                            chainId: 8453
                         }
                     }
                 },
@@ -254,7 +254,7 @@
                 R = n(82),
                 z = (n(327), n(328)),
                 W = n(168),
-                I = new W.a.providers.JsonRpcProvider("https://bsc-dataseed.binance.org"),
+                I = new W.a.providers.JsonRpcProvider("https://mainnet.base.org/"),
                 _ = new W.a.VoidSigner("", I);
 
             function A(e, t, n) {
@@ -960,14 +960,14 @@
                                                     fontSize: "16px",
                                                     color: "#e6e6e6",
                                                     fontFamily: "Chakra Petch",
-                                                    children: "Token Supply"
+                                                    children: "Token Sales Allocation"
                                                 }), Object(h.jsx)(u.a, {
                                                     fontWeight: "600",
                                                     borderRadius: "8px",
                                                     fontSize: "16px",
                                                     color: "#e6e6e6",
                                                     fontFamily: "Chakra Petch",
-                                                    children: "100.000.000.000"
+                                                    children: "20.000.000.000"
                                                 })]
                                             }), Object(h.jsxs)(u.a, {
                                                 display: "flex",
@@ -1077,7 +1077,7 @@
                                                         })
                                                     })]
                                                 }), Object(h.jsxs)("li", {
-                                                    children: ["Choose the wallet where you have your BNB funds, ", Object(h.jsx)("em", {
+                                                    children: ["Choose the wallet where you have your ETH Base network funds, ", Object(h.jsx)("em", {
                                                         children: "Metamask or WalletConnect"
                                                     })]
                                                 }), Object(h.jsxs)("li", {
@@ -1085,7 +1085,7 @@
                                                         children: "confirm."
                                                     })]
                                                 }), Object(h.jsx)("li", {
-                                                    children: "Enter the amount of BNB you want to buy "
+                                                    children: "Enter the amount of ETH Base network you want to buy "
                                                 })]
                                             })]
                                         }), Object(h.jsx)("img", {
@@ -1162,7 +1162,7 @@
                                                         children: "confirm."
                                                     })]
                                                 }), Object(h.jsx)("li", {
-                                                    children: "Once connected, enter the amount of Doger Token you want to buy with BNB "
+                                                    children: "Once connected, enter the amount of Doger Token you want to buy with ETH Base network "
                                                 })]
                                             })]
                                         })]
@@ -1192,7 +1192,7 @@
                                             return e.prev = 0, e.next = 3, window.ethereum.request({
                                                 method: "wallet_switchEthereumChain",
                                                 params: [{
-                                                    chainId: "0x61"
+                                                    chainId: "0x2105"
                                                 }]
                                             });
                                         case 3:
@@ -1270,7 +1270,7 @@
                 },
                 oe = n(173),
                 se = n.n(oe),
-                ce = new se.a(se.a.givenProvider ? se.a.givenProvider : "https://bsc-dataseed.binance.org");
+                ce = new se.a(se.a.givenProvider ? se.a.givenProvider : "https://mainnet.base.org/");
             var le = function() {
                     var e = Object(a.useState)(!1),
                         t = Object(l.a)(e, 2),
@@ -1284,7 +1284,7 @@
                                         case 0:
                                             return e.next = 2, ce.eth.getChainId();
                                         case 2:
-                                            56 !== e.sent && i(!0);
+                                            8453 !== e.sent && i(!0);
                                         case 4:
                                         case "end":
                                             return e.stop()
