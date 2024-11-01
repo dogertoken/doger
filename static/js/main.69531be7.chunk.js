@@ -361,7 +361,7 @@
                             return Object(s.a)().wrap((function(e) {
                                 for (;;) switch (e.prev = e.next) {
                                     case 0:
-                                        t = Q.a.utc("Dec 20 2022, 11:00:00").format("x"), n = setInterval((function() {
+                                        t = Q.a.utc("Dec 26 2024, 11:00:00").format("x"), n = setInterval((function() {
                                             var e = Q.a.utc().format("x"),
                                                 a = t - e,
                                                 o = Math.floor(a / 864e5),
