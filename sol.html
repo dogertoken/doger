@@ -1,1 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presale Doger Token</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+        .status {
+            margin-top: 20px;
+            font-weight: bold;
+            color: green;
+        }
+    </style>
+    <script src="https://unpkg.com/@solana/web3.js@latest"></script>
+</head>
+<body>
+
+<div class="container">
+    <h2>Presale Doger Token</h2>
+    <label for="amount">Jumlah SOL:</label>
+    <input type="number" id="amount" placeholder="Masukkan jumlah SOL" min="1" max="10" oninput="updateTotalTokens()">
+    <div class="result" id="result"></div>
+    <button id="buyButton">Beli Token</button>
+    <div class="status" id="status"></div>
+</div>
+
+<script>
+    const tokenRate = 100000; // 1 SOL = 100000 Doger Token
+    const { Connection, PublicKey, clusterApiUrl, Transaction, SystemProgram, sendAndConfirmTransaction } = window.solanaWeb3;
+    const connection = new Connection(clusterApiUrl('devnet'), 'confirmed');
+    const presaleWallet = new PublicKey('ALAMAT_DOMPET_PRESALE'); // Ganti dengan alamat dompet presale Anda
+    const tokenMintAddress = new PublicKey('ALAMAT_KONTRAK_TOKEN'); // Ganti dengan alamat kontrak token Anda
+
+    function updateTotalTokens() {
+        const amountInput = document.getElementById('amount').value;
+        const amount = parseFloat(amountInput);
+        const totalTokens = amount * tokenRate;
+        document.getElementById('result').innerText = 
+            amountInput ? `Anda akan menerima ${totalTokens} Doger Token.` : '';
+    }
+
+    document.getElementById('buyButton').addEventListener('click', async () => {
+        const amountInSOL = parseFloat(document.getElementById('amount').value);
+        
+        if (amountInSOL < 1 || amountInSOL > 10) {
+            document.getElementById('status').innerText = "Jumlah SOL tidak valid.";
+            return;
+        }
+
+        const amountToMint = amountInSOL * tokenRate; // Konversi SOL ke token
+        
+        const provider = window.solana;
+        
+        if (provider && provider.isPhantom) {
+            await provider.connect();
+            const payer = provider.publicKey;
+
+            try {
+                // Kirim SOL ke dompet presale
+                const transaction = new Transaction().add(
+                    SystemProgram.transfer({
+                        fromPubkey: payer,
+                        toPubkey: presaleWallet,
+                        lamports: amountInSOL * window.solanaWeb3.LAMPORTS_PER_SOL,
+                    })
+                );
+
+                const signature = await sendAndConfirmTransaction(connection, transaction, [payer]);
+                console.log('Transaksi berhasil dengan tanda tangan:', signature);
+
+                // Mint token ke alamat pembeli
+                await mintToken(connection, payer, tokenMintAddress, amountToMint);
+                document.getElementById('status').innerText = "Pembelian berhasil!";
+            } catch (error) {
+                console.error("Pembelian gagal:", error);
+                document.getElementById('status').innerText = "Pembelian gagal, silakan coba lagi.";
+            }
+        } else {
+            alert("Silakan instal dompet Phantom.");
+        }
+    });
+
+    async function mintToken(connection, payer, tokenMintAddress, amount) {
+        // Fungsi minting token harus ditulis di sini
+        console.log('Minting token ke', payer.toString(), 'sebanyak', amount);
+        // Implementasikan logika mint di sini
+    }
+</script>
+
+</body>
+</html>
 
