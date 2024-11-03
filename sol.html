@@ -67,8 +67,8 @@
         provider = window.solana;
         if (provider && provider.isPhantom) {
             try {
-                await provider.connect();
-                payer = provider.publicKey;
+                const response = await provider.connect();
+                payer = response.publicKey;
                 document.getElementById('buyButton').disabled = false;
                 document.getElementById('status').innerText = "Dompet terhubung: " + payer.toString();
             } catch (err) {
