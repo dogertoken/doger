@@ -39,7 +39,6 @@
             font-weight: bold;
         }
     </style>
-    <script src="https://unpkg.com/@solana/web3.js@latest"></script>
 </head>
 <body>
 
@@ -53,6 +52,7 @@
     <div class="status" id="status"></div>
 </div>
 
+<script src="https://unpkg.com/@solana/web3.js@latest"></script>
 <script>
     const tokenRate = 100000; // 1 SOL = 100000 Doger Token
     let provider;
@@ -126,9 +126,9 @@
     });
 
     async function mintToken(connection, payer, tokenMintAddress, amount) {
-        // Fungsi minting token harus ditulis di sini
+        // Implementasi minting token
         console.log('Minting token ke', payer.toString(), 'sebanyak', amount);
-        // Implementasikan logika mint di sini
+        // Tambahkan logika mint di sini sesuai dengan kontrak token Anda
     }
 </script>
 
