@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Token Minting OPBNB</title>
+    <link rel="stylesheet" href="styles.css"> <!-- CSS Anda -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav id="navbar">
+        <div class="container">
+            <div class="logo">Minting DApp</div>
+            <ul class="nav-links">
+                <li><a href="#connectWallet">Connect Wallet</a></li>
+                <li><a href="#mintSection">Mint Tokens</a></li>
+                <li><a href="#networkSwitch">Network</a></li>
+            </ul>
+            <div class="menu-toggle">☰</div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="hero">
+        <div class="container">
+            <h1>Token Minting OPBNB</h1>
+            <p>Connect your wallet and mint tokens easily on OPBNB Testnet!</p>
+        </div>
+    </header>
+
+    <!-- Wallet Connection -->
+    <section id="connectWallet">
+        <div class="container">
+            <h2>Connect Wallet</h2>
+            <button onclick="connectWallet()">Connect Wallet</button>
+        </div>
+    </section>
+
+    <!-- Wallet Info -->
+    <section id="walletInfo" style="display: none;">
+        <div class="container">
+            <h2>Wallet Information</h2>
+            <p><strong>Wallet Address:</strong> <span id="walletAddress"></span></p>
+            <p><strong>tBNB Balance:</strong> <span id="ethBalance"></span></p>
+            <button onclick="disconnectWallet()">Disconnect Wallet</button>
+        </div>
+    </section>
+
+    <!-- Network Error Message -->
+    <section id="wrongNetwork" style="display: none;">
+        <div class="container">
+            <h2>Wrong Network</h2>
+            <p>You are not connected to OPBNB Testnet. Please switch networks.</p>
+            <button id="switchToOPBNBButton" onclick="switchToOPBNBNetwork()">Switch to OPBNB Testnet</button>
+        </div>
+    </section>
+
+    <!-- Successful Network Connection -->
+    <section id="correctNetwork" style="display: none;">
+        <div class="container">
+            <p>✅ Connected to OPBNB Testnet!</p>
+        </div>
+    </section>
+
+    <!-- Minting Section -->
+    <section id="mintSection" style="display: none;">
+        <div class="container">
+            <h2>Mint Tokens</h2>
+            <p>Click the button below to mint 1000 tokens.</p>
+            <button onclick="mintTokens()">Mint 1000 Tokens</button>
+        </div>
+    </section>
+
+    <!-- Embedded Iframe -->
+    <section id="externalContent">
+        <div class="container">
+            <iframe src="https://dxfi.github.io/Ex/Bar2" width="300" height="250"></iframe>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="container">
+            <p>© 2025 Token Minting DApp. All Rights Reserved.</p>
+            <div class="social-links">
+                <a href="https://twitter.com" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+                <a href="https://tiktok.com" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="https://telegram.org" target="_blank"><i class="fa-brands fa-telegram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script> <!-- JavaScript Anda -->
+</body>
+  </html>
