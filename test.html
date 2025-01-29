@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A decentralized application for minting tokens using Ethereum and OPBNB Testnet.">
+    <title>Token Minting</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        :root {
+            --primary-color: #00d4ff;
+            --secondary-color: #1f2937;
+            --text-color: #ffffff;
+            --bg-color: #0d1117;
+            --accent-color: #ff007a;
+            --border-radius: 1rem;
+            --transition: all 0.4s ease;
+            --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Navbar */
+        .navbar {
+            width: 100%;
+            background: var(--secondary-color);
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: var(--box-shadow);
+        }
+
+        .navbar h2 {
+            color: var(--primary-color);
+            margin-left: 1rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+            margin-right: 1rem;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            background: var(--primary-color);
+            color: var(--bg-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: var(--text-color);
+            padding: 2rem;
+            margin-top: 60px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+        }
+
+        .hero button {
+            margin-top: 2rem;
+        }
+
+        /* Container */
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        /* Footer */
+        .footer {
+            width: 100%;
+            background: var(--secondary-color);
+            color: var(--text-color);
+            text-align: center;
+            padding: 1rem;
+            margin-top: auto;
+            box-shadow: var(--box-shadow);
+        }
+
+        /* Button */
+        button {
+            background: linear-gradient(145deg, var(--primary-color), var(--accent-color));
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--box-shadow);
+            margin-top: 1rem;
+        }
+
+        button:hover {
+            background: linear-gradient(145deg, var(--accent-color), var(--primary-color));
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.5);
+        }
+
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <h2>Token Minting</h2>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#mintSection">Mint</a>
+            <a href="#">About</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Mint Your Own Tokens</h1>
+        <p>Connect your wallet and mint tokens easily with one click.</p>
+        <button onclick="connectWallet()">Connect Wallet</button>
+    </section>
+
+    <!-- Konten -->
+    <div class="container">
+        <section id="walletInfo" style="display: none;">
+            <h2>Wallet Information</h2>
+            <p><strong>Wallet Address:</strong> <span id="walletAddress"></span></p>
+            <p><strong>tBNB Balance:</strong> <span id="ethBalance"></span></p>
+            <button onclick="disconnectWallet()">Disconnect Wallet</button>
+        </section>
+
+        <section id="mintSection" style="display: none;">
+            <h2>Mint Tokens</h2>
+            <p>Click the button below to mint 1000 tokens.</p>
+            <button onclick="mintTokens()">Mint 1000 Tokens</button>
+        </section>
+
+        <section>
+            <iframe src="https://dxfi.github.io/Ex/Bar2" width="400" height="500"></iframe>
+        </section>
+        
+        <section>
+            <iframe src="https://dxfi.github.io/Ex/" width="400" height="500"></iframe>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 Token Minting. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        async function connectWallet() {
+            if (window.ethereum) {
+                try {
+                    const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+                    const account = accounts[0];
+                    document.getElementById("walletAddress").textContent = account;
+                    document.getElementById("walletInfo").style.display = "block";
+                    document.getElementById("mintSection").style.display = "block";
+
+                    const balance = await ethereum.request({ method: 'eth_getBalance', params: [account, 'latest'] });
+                    document.getElementById("ethBalance").textContent = parseFloat(balance) / 1e18 + " tBNB";
+                } catch (error) {
+                    console.error(error);
+                }
+            } else {
+                alert("Please install MetaMask!");
+            }
+        }
+
+        function disconnectWallet() {
+            document.getElementById("walletInfo").style.display = "none";
+            document.getElementById("mintSection").style.display = "none";
+        }
+
+        async function mintTokens() {
+            alert("1000 Tokens Minted!");
+        }
+    </script>
+</body>
+</html>
