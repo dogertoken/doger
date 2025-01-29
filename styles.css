@@ -1,0 +1,195 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #121212;
+    color: white;
+    font-family: 'Poppins', Arial, sans-serif;
+    margin: 0;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+/* ✅ Navbar Styling */
+.navbar {
+    width: 100%;
+    background: var(--secondary-color);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.nav-links li {
+    display: inline;
+}
+
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+/* ✅ Tombol Menu Toggle untuk Mobile */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+/* ✅ Container Layout */
+.container {
+    width: 90%;
+    max-width: 800px;
+    margin: 80px auto 0;
+    text-align: center;
+}
+
+/* ✅ Tombol Modern */
+.btn-modern {
+    background: linear-gradient(135deg, #ff7eb3, #ff758c);
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 4px 10px rgba(255, 117, 140, 0.5);
+}
+
+.btn-modern:hover {
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    box-shadow: 0 6px 15px rgba(255, 117, 140, 0.7);
+    transform: scale(1.05);
+}
+
+.btn-modern:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 8px rgba(255, 117, 140, 0.4);
+}
+
+/* ✅ Styling Button */
+button {
+    background: linear-gradient(145deg, var(--primary-color), var(--accent-color));
+    color: white;
+    border: none;
+    padding: 1rem 2.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: var(--box-shadow);
+    min-width: 150px;
+}
+
+button:hover {
+    background: linear-gradient(145deg, var(--accent-color), var(--primary-color));
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 212, 255, 0.5);
+}
+
+/* ✅ Iframe & Konten Eksternal */
+#externalContent iframe {
+    width: 100%;
+    max-width: 600px;
+    height: 300px;
+    border-radius: 10px;
+    border: none;
+}
+
+/* ✅ UI Notifikasi Jaringan */
+#wrongNetwork, #correctNetwork {
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    width: 90%;
+    max-width: 450px;
+    z-index: 1000;
+    animation: fadeIn 0.8s ease-out;
+}
+
+#wrongNetwork {
+    background: linear-gradient(135deg, #ff6f61, #ff9a8b);
+}
+
+#correctNetwork {
+    background-color: #4CAF50;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* ✅ Responsivitas */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background: var(--secondary-color);
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        padding: 10px;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .container {
+        width: 100%;
+        padding: 1rem;
+    }
+
+    button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2rem;
+    }
+  }
