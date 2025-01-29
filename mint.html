@@ -50,6 +50,42 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #121212;
+            font-family: Arial, sans-serif;
+        }
+        
+        .btn-modern {
+            background: linear-gradient(135deg, #ff7eb3, #ff758c);
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            color: white;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(255, 117, 140, 0.5);
+        }
+        
+        .btn-modern:hover {
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            box-shadow: 0 6px 15px rgba(255, 117, 140, 0.7);
+            transform: scale(1.05);
+        }
+        
+        .btn-modern:active {
+            transform: scale(0.95);
+            box-shadow: 0 2px 8px rgba(255, 117, 140, 0.4);
+        }
+    </style>
+	
     <style>
         :root {
             --primary-color: #00d4ff; 
@@ -282,9 +318,10 @@
     </section>
 
     <section><iframe src="https://dxfi.github.io/Ex/Bar2" width="300" height="400"></iframe></section>
-    
-    <section><iframe src="https://dxfi.github.io/Ex/" width="400" height="500"></iframe></section>
-
+	
+    <button class="btn-modern" onclick="window.open('https://dxfi.github.io/Ex/', '_blank')">
+        Open Minting Explorer
+    </button>
     <!-- Footer Start -->
         <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
             <div class="container py-5">
