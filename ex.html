@@ -144,8 +144,7 @@
                 const end = Math.min(start + transactionsPerPage, totalTransactions);
 
                 // Ambil transaksi untuk halaman saat ini
-                const currentEvents = events.slice(start, end).map(event => ({
-                    from: event.returnValues.from,
+                const currentEvents = events.slice(start, end).map(event => ({      
                     to: event.returnValues.to,
                     value: web3.utils.fromWei(event.returnValues.value, 'ether'),
                     blockNumber: event.blockNumber,
@@ -157,11 +156,11 @@
                 const historyContainer = document.getElementById("historyContainer");
                 historyContainer.innerHTML = currentEvents.map(event => `
                     <div class="event">
-                        <p><strong>From:</strong> ${shortenAddress(event.from)}</p>
-                        <p><strong>To:</strong> ${shortenAddress(event.to)}</p>
-                        <p><strong>Amount:</strong> ${event.value} AI</p>
+                        <p><strong>Tx Id:</strong> <a href="https://opbnb-testnet.bscscan.com/tx/${event.transactionHash}" target="_blank">${shortenTxid(event.transactionHash)}</a></p>
                         <p><strong>Block:</strong> ${event.blockNumber}</p>
-                        <p><strong>Transaction:</strong> <a href="https://opbnb-testnet.bscscan.com/tx/${event.transactionHash}" target="_blank">${shortenTxid(event.transactionHash)}</a></p>
+                        <p><strong>Address:</strong> ${shortenAddress(event.to)}</p>
+                        <p><strong>Mint. . . . .</strong></p>
+                        <p><strong>Amount:</strong> ${event.value} AI</p>
                         <p><strong>Time:</strong> ${formatTimeAgo(event.timestamp)}</p>
                     </div>
                     <hr>
