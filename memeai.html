@@ -16,31 +16,48 @@
 
     /* Font imut, tebal, dan bulat */
     body {
-      font-family: "Baloo 2", sans-serif; /* Font bulat dan tebal, "e" seperti tersenyum */
+      font-family: "Baloo 2", sans-serif;
       background: black;
       color: white;
       text-align: center;
       overflow-x: hidden;
     }
 
-    /* Efek animasi luar angkasa */
-    body::before {
-      content: "";
+    /* Efek nebula dan bintang */
+    .background {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: url('https://source.unsplash.com/1600x900/?nebula,space,stars') no-repeat center center/cover;
-      opacity: 0.3;
-      z-index: -1;
+      z-index: -2;
+      background: url('https://source.unsplash.com/1600x900/?nebula,galaxy,stars') no-repeat center center/cover;
+      opacity: 0.4;
       animation: spaceMove 20s infinite linear;
+    }
+
+    /* Efek animasi bintang */
+    .stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: url('https://www.transparenttextures.com/patterns/stardust.png');
+      opacity: 0.3;
+      animation: starsMove 100s linear infinite;
     }
 
     @keyframes spaceMove {
       0% { transform: scale(1) rotate(0deg); }
       50% { transform: scale(1.05) rotate(1deg); }
       100% { transform: scale(1) rotate(0deg); }
+    }
+
+    @keyframes starsMove {
+      0% { background-position: 0 0; }
+      100% { background-position: 10000px 5000px; }
     }
 
     /* Glassmorphism Navbar */
@@ -113,6 +130,7 @@
       backdrop-filter: blur(10px);
       background: rgba(255, 255, 255, 0.1);
       border-top: 1px solid rgba(255, 255, 255, 0.2);
+      position: relative;
     }
 
     /* Social Media Icons */
@@ -145,6 +163,10 @@
   </style>
 </head>
 <body>
+
+  <!-- Latar belakang animasi -->
+  <div class="background"></div>
+  <div class="stars"></div>
 
   <!-- Navbar -->
   <nav>
