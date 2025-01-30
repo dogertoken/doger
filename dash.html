@@ -5,75 +5,116 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="dash/x.css">
-    <style>body {
-    font-family: Arial, sans-serif;
+    <style>
+/* --- Global Styles --- */
+body {
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    background: #292929;
+    background: linear-gradient(135deg, #1e1e1e, #121212);
+    color: #ffffff;
 }
 
+/* --- Container Layout --- */
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
-}
-
-#wallet-info, #referralSection, #leaderboard, #checkInSection {
-    background-color: #fff;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-}
-
-button {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button:disabled {
-    background-color: #ccc;
-}
-
-button:hover {
-    background-color: #45a049;
-}
-
-h3 {
-    color: #fff;
-}
-
-#walletAddress, #referralLink, #totalReferrals, #streak {
-    font-size: 18px;
-    margin: 10px 0;
-}
-
-#leaderboardTable {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-#leaderboardTable th, #leaderboardTable td {
-    padding: 10px;
-    border: 1px solid #ddd;
     text-align: center;
 }
 
+/* --- Card Styling --- */
+#wallet-info, #referralSection, #leaderboard, #checkInSection {
+    background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 255, 170, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#wallet-info:hover, #referralSection:hover, #leaderboard:hover, #checkInSection:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px rgba(0, 255, 170, 0.4);
+}
+
+/* --- Button Styling --- */
+button {
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background: linear-gradient(135deg, #00ff88, #0088ff);
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 255, 170, 0.3);
+    transition: 0.3s ease-in-out;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #0088ff, #00ff88);
+    box-shadow: 0 6px 15px rgba(0, 255, 170, 0.5);
+}
+
+button:disabled {
+    background: #555;
+    color: #999;
+    cursor: not-allowed;
+}
+
+/* --- Typography --- */
+h3 {
+    color: #00ff88;
+    font-size: 22px;
+    text-shadow: 0px 0px 5px rgba(0, 255, 170, 0.6);
+}
+
+/* --- Wallet & Referral Info --- */
+#walletAddress, #referralLink, #totalReferrals, #streak {
+    font-size: 18px;
+    margin: 10px 0;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 6px;
+    display: inline-block;
+}
+
+/* --- Leaderboard Table --- */
+#leaderboardTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+#leaderboardTable th, #leaderboardTable td {
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+}
+
+#leaderboardTable th {
+    background: rgba(0, 255, 170, 0.2);
+    color: #00ff88;
+}
+
+/* --- Responsive Design --- */
 @media (max-width: 768px) {
     .container {
         padding: 10px;
     }
 
     button {
-        padding: 8px 16px;
+        padding: 10px 20px;
     }
 
     #walletAddress, #referralLink, #totalReferrals, #streak {
         font-size: 16px;
+        padding: 8px;
     }
 }</style>
 </head>
