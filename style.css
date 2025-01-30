@@ -150,7 +150,7 @@ body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #fff;
+  background-color:
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -172,7 +172,7 @@ body {
   font-size: 24px;
   font-weight: 600;
   margin-bottom: 20px;
-  color: #333; /* Warna diperbaiki agar lebih terbaca */
+  color: #fff; /* Warna diperbaiki agar lebih terbaca */
 }
 
 .progress-bar {
