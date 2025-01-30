@@ -157,6 +157,43 @@ footer {
     box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
 }
 
+/* ========== Social Links ========== */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2); /* Latar belakang transparan */
+    color: white;
+    font-size: 1.8rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.social-links a:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(255, 255, 255, 0.3);
+}
+
+/* Untuk tampilan lebih kecil */
+@media (max-width: 768px) {
+    .social-links a {
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+    }
+}
+
 /* ========== Efek Neon untuk Judul ========== */
 h1, h2 {
     font-weight: bold;
