@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div id="wallet-info">
+            <button id="connectButton">Connect Wallet</button>
+            <button id="disconnectButton" style="display:none;">Disconnect Wallet</button>
+            <div id="walletAddress"></div>
+        </div>
+
+        <div id="referralSection">
+            <h3>Referral Program</h3>
+            <div id="referralLink">Your Referral Link: <span id="link"></span></div>
+            <div id="totalReferrals">Total Referrals: 0</div>
+            <button id="claimButton" disabled>Claim Points</button>
+        </div>
+
+        <div id="leaderboard">
+            <h3>Leaderboard</h3>
+            <table id="leaderboardTable">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Wallet Address</th>
+                        <th>TPoint Balance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Leaderboard data will be inserted here -->
+                </tbody>
+            </table>
+        </div>
+
+        <div id="checkInSection">
+            <h3>Check-In System</h3>
+            <button id="checkInButton">Check-In</button>
+            <div id="statusCheckIn"></div>
+            <div id="streak">Streak: 0 days</div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.6.1/dist/web3.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
