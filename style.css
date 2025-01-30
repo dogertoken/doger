@@ -202,18 +202,6 @@ button:hover {
 }
 
 /* ========== Progress Bar Section ========== */
-body {
-  font-family: 'Poppins', sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #fff;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-}
-
 .progress-container {
   width: 100%;
   max-width: 500px;
