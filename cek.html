@@ -100,7 +100,7 @@
         </div>
     </footer>
     
-    <script src="scrit.js"></script> <!-- JavaScript Anda --
+    <script src="scrit.js"></script>
 
     <script>
     
@@ -271,48 +271,6 @@ async function updateWalletInfo() {
         minterInstance = null;
         toggleUI('disconnected');
     }
-
-   // Progress Bar Section
-
-  // Alamat Kontrak Token
-  // Gunakan RPC opBNB Testnet
-  const web3 = new Web3("https://opbnb-testnet-rpc.bnbchain.org");
-
-  const contract = new web3.eth.Contract(ABI, CONTRACT_ADDRESS);
-
-  // Ambil jumlah desimal dari kontrak
-  async function getDecimals() {
-    const decimals = await contract.methods.decimals().call();
-    return parseInt(decimals);
-  }
-
-  // Total pasokan maksimum yang bisa diminting
-  const MAX_SUPPLY = 1000000;
-
-  async function updateProgress() {
-    try {
-      // Ambil total supply yang sudah diminting
-      const mintedTokens = await contract.methods.totalSupply().call();
-      const decimals = await getDecimals();
-      const minted = parseInt(mintedTokens) / Math.pow(10, decimals);
-
-      // Hitung persentase progress
-      const progressPercentage = (minted / MAX_SUPPLY) * 100;
-
-      // Update tampilan
-      document.getElementById('progressFill').style.width = progressPercentage + '%';
-      document.getElementById('progressText').innerText = `${minted.toFixed(2)} / ${MAX_SUPPLY} Tokens Minted`;
-    } catch (error) {
-      console.error("Error fetching contract data:", error);
-      document.getElementById('progressText').innerText = "Error loading data";
-    }
-  }
-
-  // Jalankan saat halaman dimuat
-  updateProgress();
-
-  // Refresh progress setiap 10 detik
-  setInterval(updateProgress, 10000);
     </script>
     
 </body>
