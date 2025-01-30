@@ -1,59 +1,100 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-    <meta charset="utf-8">
-    <title>Doger Token - Meme Coin for Dog Lovers</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, shrink-to-fit=no">
-    
-    <!-- Template Stylesheet -->
-    <link href="style.css" rel="stylesheet">
-
-<div id="wrongNetwork">
-    <p>You are not connected to the OPBNB Testnet. Please add the OPBNB Testnet RPC.</p>
-    <button onclick="switchToOPBNBNetwork()">Switch to OPBNB Testnet</button>
-</div>
-
-<div id="correctNetwork">
-    <p>Connected to OPBNB Testnet!</p>
-</div>
-
-    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Token Minting OPBNB</title>
+    <link rel="stylesheet" href="style.css"> <!-- CSS Anda -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
 </head>
 <body>
-    <header>
-        <h1>Token Minting</h1>
-        <p>Connect your wallet and mint tokens easily!</p>
+
+    <!-- Navbar -->
+    <nav id="navbar">
+        <div class="container">
+            <div class="logo">Minting DApp</div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="hero">
+        <div class="container">
+            <h1>Token Minting OPBNB</h1>
+            <p>Connect your wallet and mint tokens easily on OPBNB Testnet!</p>
+        </div>
     </header>
 
-    <section id="connectWallet">
-        <button onclick="connectWallet()">Connect Wallet</button>
+    <!-- Wallet Connection -->
+    <section id="connectWallet" style="width: min(90%, 400px); margin: auto; text-align: center; margin-bottom: 20px;">
+        <div>
+            <h2>Connect Wallet</h2>
+            <button onclick="connectWallet()">Connect Wallet</button>
+        </div>
     </section>
 
-    <section id="walletInfo" style="display: none;">
-        <h2>Wallet Information</h2>
-        <p><strong>Wallet Address:</strong> <span id="walletAddress"></span></p>
-        <p><strong>tBNB Balance:</strong> <span id="ethBalance"></span></p>
-        <button onclick="disconnectWallet()">Disconnect Wallet</button>
+    <!-- Wallet Info -->
+    <section id="walletInfo" style="display: none; width: min(90%, 400px); margin: auto; text-align: center; margin-bottom: 20px;">
+        <div>
+            <h2>Wallet Information</h2>
+            <p><strong>Wallet Address:</strong> <span id="walletAddress"></span></p>
+            <p><strong>tBNB Balance:</strong> <span id="ethBalance"></span></p>
+            <button onclick="disconnectWallet()">Disconnect Wallet</button>
+        </div>
     </section>
 
-
-    <section id="networkSwitch" style="display: none;">
-        <h2>Wrong Network</h2>
-        <p>You are not connected to OPBNB Testnet. Please switch networks.</p>
-        <button id="switchToOPBNBButton" onclick="switchToOPBNBNetwork()">Switch to OPBNB Testnet</button>
+    <!-- Network Error Message -->
+    <section id="wrongNetwork" style="display: none; width: min(90%, 400px); margin: auto; text-align: center; margin-bottom: 20px;">
+        <div>
+            <h2>Wrong Network</h2>
+            <p>You are not connected to OPBNB Testnet. Please switch networks.</p>
+            <button id="switchToOPBNBButton" onclick="switchToOPBNBNetwork()">Switch to OPBNB Testnet</button>
+        </div>
     </section>
 
-    <section id="mintSection" style="display: none;">
-        <h2>Mint Tokens</h2>
-        <p>Click the button below to mint 1000 tokens.</p>
-        <button onclick="mintTokens()">Mint 1000 Tokens</button>
+    <!-- Successful Network Connection -->
+    <section id="correctNetwork" style="display: none; width: min(90%, 400px); margin: auto; text-align: center; margin-bottom: 20px;">
+        <div>
+            <p>✅ Connected to OPBNB Testnet!</p>
+        </div>
     </section>
 
-    <section><iframe src="https://dxfi.github.io/Ex/Bar2" width="300" height="250"></iframe></section>
-    
-<script src="script.js"></script>
-	
+    <!-- Minting Section -->
+    <section id="mintSection" style="display: none; width: min(90%, 400px); margin: auto; text-align: center; margin-bottom: 20px;">
+        <div>
+            <h2>Mint Tokens</h2>
+            <p>Click the button below to mint 1000 tokens.</p>
+            <button onclick="mintTokens()">Mint 1000 Tokens</button>
+        </div>
+    </section>
+
+    <!-- Embedded Iframe -->
+    <section id="externalContent" style="margin-bottom: 20px;">
+        <div class="container">
+            <iframe src="https://doger.my/bar" style="width: 100%; height: auto; aspect-ratio: 350 / 250; border: none;"></iframe>
+        </div>
+    </section>
+
+    <!-- Embedded Iframe -->
+    <section id="externalContent" style="margin-bottom: 20px;">
+        <div class="container">
+            <iframe src="https://doger.my/ex" style="width: 100%; height: auto; aspect-ratio: 350 / 600; border: none;"></iframe>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer" style="text-align: center; margin-top: 20px;">
+        <div class="container">
+            <p>© 2025 Token Minting DApp. All Rights Reserved.</p>
+            <div class="social-links">
+                <a href="https://twitter.com" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+                <a href="https://tiktok.com" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="https://telegram.org" target="_blank"><i class="fa-brands fa-telegram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
