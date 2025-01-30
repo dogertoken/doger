@@ -204,6 +204,33 @@ body {
   font-weight: 600;
 }
 
+/* ========== Iframe Section ========== */
+        /* Styling untuk section agar iframe selalu berada di tengah */
+        #externalContent {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            max-width: 320px; /* Bisa diubah sesuai kebutuhan */
+            margin: 10px;
+        }
+
+        /* Membuat iframe responsif */
+        .container iframe {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 3 / 2; /* Menyesuaikan perbandingan aspek */
+            border: none;
+        }
+
 /* ========== Footer ========== */
 footer {
     background: rgba(30, 58, 138, 0.9);
