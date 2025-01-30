@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Republic Of MemeAi</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet">
   <style>
     /* Reset */
     * {
@@ -13,13 +14,33 @@
       box-sizing: border-box;
     }
 
-    /* Font imut khas anak-anak */
+    /* Font imut, tebal, dan bulat */
     body {
-      font-family: "Comic Sans MS", cursive, sans-serif; /* Jika ingin lebih imut, bisa pakai Google Font: Fredoka One */
-      background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+      font-family: "Baloo 2", sans-serif; /* Font bulat dan tebal, "e" seperti tersenyum */
+      background: black;
       color: white;
       text-align: center;
       overflow-x: hidden;
+    }
+
+    /* Efek animasi luar angkasa */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://source.unsplash.com/1600x900/?nebula,space,stars') no-repeat center center/cover;
+      opacity: 0.3;
+      z-index: -1;
+      animation: spaceMove 20s infinite linear;
+    }
+
+    @keyframes spaceMove {
+      0% { transform: scale(1) rotate(0deg); }
+      50% { transform: scale(1.05) rotate(1deg); }
+      100% { transform: scale(1) rotate(0deg); }
     }
 
     /* Glassmorphism Navbar */
@@ -39,7 +60,7 @@
     .logo {
       font-size: 24px;
       font-weight: bold;
-      background: linear-gradient(90deg, #b47cff, #8a2be2);
+      background: linear-gradient(90deg, #00ff7f, #008000);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -57,12 +78,12 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background: radial-gradient(circle at top, rgba(138, 43, 226, 0.3), transparent);
+      background: radial-gradient(circle at top, rgba(0, 255, 127, 0.3), transparent);
     }
 
     .hero h1 {
       font-size: 3rem;
-      text-shadow: 0px 0px 10px rgba(138, 43, 226, 0.8);
+      text-shadow: 0px 0px 10px rgba(0, 255, 127, 0.8);
     }
 
     /* Sections */
@@ -83,7 +104,7 @@
       backdrop-filter: blur(15px);
       background: rgba(255, 255, 255, 0.1);
       border: 1px solid rgba(255, 255, 255, 0.2);
-      box-shadow: 0 5px 15px rgba(138, 43, 226, 0.3);
+      box-shadow: 0 5px 15px rgba(0, 255, 127, 0.3);
     }
 
     /* Footer */
@@ -107,8 +128,8 @@
     }
 
     .social-icons a:hover {
-      color: #b47cff;
-      text-shadow: 0px 0px 15px #b47cff;
+      color: #00ff7f;
+      text-shadow: 0px 0px 15px #00ff7f;
     }
 
     /* Responsive */
