@@ -6,7 +6,7 @@
   <title>Republic Of MemeAi</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <style>
-    /* Resetting some default styles */
+    /* Reset Style */
     * {
       margin: 0;
       padding: 0;
@@ -14,100 +14,110 @@
     }
 
     body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+      color: white;
+      text-align: center;
+      overflow-x: hidden;
     }
 
-    /* Navbar Styles */
+    /* Glassmorphism Navbar */
     nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px;
-      background: rgba(0, 0, 0, 0.7);
+      position: fixed;
+      width: 100%;
+      padding: 15px 50px;
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      z-index: 1000;
     }
-    
+
     .logo {
-      color: white;
       font-size: 24px;
       font-weight: bold;
+      background: linear-gradient(90deg, #ff7eb3, #ff758c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .hamburger {
       display: none;
       font-size: 30px;
-      color: white;
       cursor: pointer;
+      color: white;
     }
 
     /* Hero Section */
     .hero {
-      background: url('hero-image.jpg') center/cover no-repeat;
       height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      color: white;
-      text-align: center;
+      background: radial-gradient(circle at top, rgba(255, 50, 150, 0.3), transparent);
     }
 
     .hero h1 {
       font-size: 3rem;
-      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+      text-shadow: 0px 0px 10px rgba(255, 50, 150, 0.8);
     }
 
     /* Sections */
-    section {
+    .section {
       padding: 50px;
-      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
     }
 
-    section:nth-child(even) {
-      background-color: #f4f4f4;
+    /* Glassmorphism Card */
+    .card {
+      max-width: 500px;
+      padding: 30px;
+      margin: 20px;
+      border-radius: 20px;
+      backdrop-filter: blur(15px);
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 5px 15px rgba(255, 50, 150, 0.2);
     }
 
-    /* Footer */
+    /* Footer dengan Glassmorphism */
     footer {
-      background-color: #333;
-      color: white;
-      text-align: center;
       padding: 20px;
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.1);
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
     }
 
-    /* Social Media Icons */
+    /* Social Icons */
     .social-icons {
       margin-top: 10px;
     }
 
     .social-icons a {
       color: white;
-      margin: 0 10px;
       font-size: 24px;
-      text-decoration: none;
+      margin: 0 15px;
+      transition: all 0.3s ease-in-out;
     }
 
     .social-icons a:hover {
-      color: #1da1f2; /* Hover effect for social media icons */
+      color: #ff7eb3;
+      text-shadow: 0px 0px 15px #ff7eb3;
     }
 
-    /* Media Query for Hamburger Menu */
+    /* Responsive Design */
     @media (max-width: 768px) {
       .hamburger {
         display: block;
       }
 
-      nav ul {
-        display: none;
-      }
-
-      nav ul.active {
-        display: block;
-        text-align: center;
-        width: 100%;
-      }
-
-      nav ul li {
-        padding: 15px;
+      nav {
+        padding: 15px 20px;
       }
     }
   </style>
@@ -116,16 +126,8 @@
 
   <!-- Navbar -->
   <nav>
-    <div class="logo">
-      Republic Of MemeAi
-    </div>
-    <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
-    <ul id="nav-links">
-      <li><a href="#">Home</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Services</a></li>
-      <li><a href="#">Contact</a></li>
-    </ul>
+    <div class="logo">Republic Of MemeAi</div>
+    <div class="hamburger">&#9776;</div>
   </nav>
 
   <!-- Hero Section -->
@@ -133,40 +135,40 @@
     <h1>Welcome to Republic Of MemeAi</h1>
   </div>
 
-  <!-- Section 1 -->
-  <section>
-    <h2>About Us</h2>
-    <p>This is where we describe what Republic Of MemeAi is all about.</p>
+  <!-- About Section -->
+  <section class="section">
+    <div class="card">
+      <h2>About Us</h2>
+      <p>Discover the future of memes powered by AI.</p>
+    </div>
   </section>
 
-  <!-- Section 2 -->
-  <section>
-    <h2>Our Services</h2>
-    <p>Details about the services we offer in this section.</p>
+  <!-- Services Section -->
+  <section class="section">
+    <div class="card">
+      <h2>Our Services</h2>
+      <p>We create and curate the best AI-generated memes.</p>
+    </div>
   </section>
 
-  <!-- Section 3 -->
-  <section>
-    <h2>Join Us</h2>
-    <p>Call to action for users to get involved with Republic Of MemeAi.</p>
+  <!-- Join Us Section -->
+  <section class="section">
+    <div class="card">
+      <h2>Join Us</h2>
+      <p>Be part of the Meme Revolution. Let’s innovate together!</p>
+    </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Republic Of MemeAi. All rights reserved.</p>
+    <p>&copy; 2025 Republic Of MemeAi</p>
     <div class="social-icons">
-      <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
-      <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
-      <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-linkedin"></i></a>
     </div>
   </footer>
 
-  <script>
-    function toggleMenu() {
-      const navLinks = document.getElementById('nav-links');
-      navLinks.classList.toggle('active');
-    }
-  </script>
 </body>
 </html>
