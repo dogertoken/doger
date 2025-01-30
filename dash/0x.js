@@ -2,30 +2,24 @@ let web3;
 let contract;
 let userWalletAddress;
 
-// ABI dari kontrak pintar dan alamat kontrak pintar (ganti dengan yang sebenarnya)
-const contractABI = [ /* ABI kontrak pintar */ ];
-const contractAddress = "0xYourContractAddress";  // Ganti dengan alamat kontrak pintar yang sebenarnya
+// ABI & Alamat Kontrak Pintar (Ganti dengan yang sebenarnya)
+const contractABI = [ /* ABI Kontrak Pintar */ ];
+const contractAddress = "0xYourContractAddress"; 
 
- // Fungsi Menghubungkan Wallet   
-    document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {
     const connectButton = document.getElementById("connectButton");
     const disconnectButton = document.getElementById("disconnectButton");
     const walletAddressDiv = document.getElementById("walletAddress");
 
     // Parameter Jaringan opBNB Testnet
     const OPBNB_TESTNET_PARAMS = {
-        chainId: "0x15eb", // Chain ID opBNB Testnet = 5611 (heksadesimal)
+        chainId: "0x15eb",
         chainName: "opBNB Testnet",
-        nativeCurrency: {
-            name: "tBNB",
-            symbol: "tBNB",
-            decimals: 18,
-        },
+        nativeCurrency: { name: "tBNB", symbol: "tBNB", decimals: 18 },
         rpcUrls: ["https://opbnb-testnet-rpc.bnbchain.org"],
         blockExplorerUrls: ["https://opbnb-testnet.bscscan.com"],
     };
 
-    // Fungsi untuk menghubungkan wallet
     async function connectWallet() {
         if (window.ethereum) {
             try {
@@ -33,17 +27,24 @@ const contractAddress = "0xYourContractAddress";  // Ganti dengan alamat kontrak
                     method: "eth_requestAccounts",
                 });
 
-                await checkNetwork(); // Pastikan berada di jaringan opBNB Testnet
+                await checkNetwork();
+                
+                userWalletAddress = accounts[0];
+                walletAddressDiv.innerText = `Connected: ${userWalletAddress}`;
 
-                const walletAddress = accounts[0];
-                walletAddressDiv.innerText = `Connected: ${walletAddress}`;
+                // Inisialisasi Web3
+                web3 = new Web3(window.ethereum);
+                contract = new web3.eth.Contract(contractABI, contractAddress);
 
                 // Proses Signature
-                const signature = await signMessage(walletAddress);
+                const signature = await signMessage(userWalletAddress);
                 console.log("User Signature:", signature);
 
                 connectButton.style.display = "none";
                 disconnectButton.style.display = "inline-block";
+                
+                // Ambil saldo awal TPoint
+                await getTPointBalance();
             } catch (error) {
                 console.error("Error connecting wallet:", error);
             }
@@ -52,7 +53,6 @@ const contractAddress = "0xYourContractAddress";  // Ganti dengan alamat kontrak
         }
     }
 
-    // Fungsi untuk memeriksa apakah wallet sudah berada di jaringan opBNB Testnet
     async function checkNetwork() {
         try {
             const chainId = await window.ethereum.request({ method: "eth_chainId" });
@@ -65,7 +65,6 @@ const contractAddress = "0xYourContractAddress";  // Ganti dengan alamat kontrak
         }
     }
 
-    // Fungsi untuk mengganti jaringan ke opBNB Testnet
     async function switchToOpBNBTestnet() {
         try {
             await window.ethereum.request({
@@ -88,28 +87,33 @@ const contractAddress = "0xYourContractAddress";  // Ganti dengan alamat kontrak
         }
     }
 
-    // Fungsi untuk memaksa pengguna menandatangani pesan
     async function signMessage(walletAddress) {
         try {
             const message = `${walletAddress} Permission Sign To Doger Portal`;
-            const signature = await window.ethereum.request({
+            return await window.ethereum.request({
                 method: "personal_sign",
                 params: [message, walletAddress],
             });
-            return signature;
         } catch (error) {
             console.error("Error signing message:", error);
         }
     }
 
-    // Fungsi untuk memutuskan koneksi wallet
     function disconnectWallet() {
         walletAddressDiv.innerText = "";
         connectButton.style.display = "inline-block";
         disconnectButton.style.display = "none";
     }
 
-    // Event listener untuk tombol connect dan disconnect
+    async function getTPointBalance() {
+        try {
+            const balance = await contract.methods.getTPointBalance(userWalletAddress).call();
+            document.getElementById('totalReferrals').innerText = `TPoint Balance: ${balance}`;
+        } catch (error) {
+            console.error("Failed to get TPoint balance:", error);
+        }
+    }
+
     connectButton.addEventListener("click", connectWallet);
     disconnectButton.addEventListener("click", disconnectWallet);
 });
