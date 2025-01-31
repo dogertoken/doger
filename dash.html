@@ -136,14 +136,7 @@ h3 {
 }</style>
 </head>
 <body>
-       <div class="container">
-
-        <div id="twitterSection">
-            <h3>Twitter Verification</h3>
-            <input type="text" id="twitterHandleInput" placeholder="Enter your Twitter handle (without @)">
-            <button id="verifyTwitterButton">Verify Twitter Follow</button>
-            <div id="twitterStatusMessage"></div>
-        </div>
+       
            
         <div id="wallet-info">
             <button id="connectButton">Connect Wallet</button>
@@ -155,7 +148,33 @@ h3 {
             <h3>Referral Program</h3>
             <div id="referralLink">Your Referral Link: <span id="link"></span></div>
             <div id="totalReferrals">Total Referrals: 0</div>
-            <button id="claimButton" disabled>Claim Points</button>
+  <div class="container">
+    <div id="twitterSection">
+        <h3>Twitter Verification</h3>
+        <button id="connectTwitterButton">Connect Twitter</button>
+        <div id="twitterUsername" style="display: none;"></div>
+
+        <button id="followTwitterButton" style="display: none;">Follow Kami</button>
+        <div id="followStatusMessage"></div>
+
+        <button id="retweetButton" style="display: none;">RT Tweet Kami</button>
+        <div id="retweetStatusMessage"></div>
+    </div>
+
+    <!-- Elemen lain yang akan terbuka setelah semua langkah Twitter selesai -->
+    <div id="walletSection" style="display: none;">
+        <button id="connectWalletButton">Connect Wallet</button>
+    </div>
+    <div id="checkinPage" style="display: none;">
+        <h3>Check-In System</h3>
+    </div>
+    <div id="referralPage" style="display: none;">
+        <h3>Referral System</h3>
+    </div>
+    <div id="leaderboardPage" style="display: none;">
+        <h3>Leaderboard</h3>
+    </div>
+  </div>          <button id="claimButton" disabled>Claim Points</button>
         </div>
 
         <div id="leaderboard">
@@ -297,55 +316,95 @@ h3 {
 });
     // Untuk Twitter 
     document.addEventListener("DOMContentLoaded", function () {
-    const verifyTwitterButton = document.getElementById("verifyTwitterButton");
-    const twitterHandleInput = document.getElementById("twitterHandleInput");
-    const twitterStatusMessage = document.getElementById("twitterStatusMessage");
+    const connectTwitterButton = document.getElementById("connectTwitterButton");
+    const followTwitterButton = document.getElementById("followTwitterButton");
+    const retweetButton = document.getElementById("retweetButton");
+    const twitterUsernameDiv = document.getElementById("twitterUsername");
+    const followStatusMessage = document.getElementById("followStatusMessage");
+    const retweetStatusMessage = document.getElementById("retweetStatusMessage");
 
-    // Gantilah dengan Bearer Token dari Twitter API Anda
-    const BEARER_TOKEN = "YOUR_TWITTER_BEARER_TOKEN";
-    const TARGET_TWITTER_ID = "123456789"; // Ganti dengan ID akun Twitter yang harus diikuti
+    const walletSection = document.getElementById("walletSection");
+    const checkinPage = document.getElementById("checkinPage");
+    const referralPage = document.getElementById("referralPage");
+    const leaderboardPage = document.getElementById("leaderboardPage");
 
-    async function verifyTwitterFollow() {
-        const twitterHandle = twitterHandleInput.value.trim();
-        if (!twitterHandle) {
-            twitterStatusMessage.innerText = "Please enter your Twitter handle.";
-            return;
+    let twitterUsername = "";
+
+    // Fungsi untuk menghubungkan Twitter
+    connectTwitterButton.addEventListener("click", function () {
+        const inputUsername = prompt("Enter your Twitter username (without @):");
+        if (inputUsername) {
+            twitterUsername = inputUsername;
+            fetch(`twitter_api.php?username=${twitterUsername}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        alert("Twitter username not found!");
+                        return;
+                    }
+
+                    twitterUsernameDiv.innerText = `Connected as @${twitterUsername}`;
+                    twitterUsernameDiv.style.display = "block";
+                    connectTwitterButton.style.display = "none";
+                    followTwitterButton.style.display = "inline-block";
+
+                    if (data.is_following) {
+                        followStatusMessage.innerText = "✅ Already following!";
+                        retweetButton.style.display = "inline-block";
+                    } else {
+                        followStatusMessage.innerText = "❌ Not following yet.";
+                    }
+
+                    if (data.has_retweeted) {
+                        retweetStatusMessage.innerText = "✅ Already retweeted!";
+                        unlockFeatures();
+                    } else {
+                        retweetStatusMessage.innerText = "❌ Not retweeted yet.";
+                    }
+                })
+                .catch(error => console.error("Error:", error));
         }
+    });
 
-        try {
-            // Ambil user ID dari Twitter handle
-            const userResponse = await fetch(`https://api.twitter.com/2/users/by/username/${twitterHandle}`, {
-                headers: { Authorization: `Bearer ${BEARER_TOKEN}` }
-            });
+    // Fungsi untuk memeriksa ulang setelah follow
+    followTwitterButton.addEventListener("click", function () {
+        fetch(`twitter_api.php?username=${twitterUsername}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.is_following) {
+                    followStatusMessage.innerText = "✅ Follow successful!";
+                    followTwitterButton.style.display = "none";
+                    retweetButton.style.display = "inline-block";
+                } else {
+                    followStatusMessage.innerText = "❌ Still not following.";
+                }
+            })
+            .catch(error => console.error("Error:", error));
+    });
 
-            const userData = await userResponse.json();
-            if (!userData.data) {
-                twitterStatusMessage.innerText = "Invalid Twitter handle.";
-                return;
-            }
+    // Fungsi untuk memeriksa ulang setelah retweet
+    retweetButton.addEventListener("click", function () {
+        fetch(`twitter_api.php?username=${twitterUsername}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.has_retweeted) {
+                    retweetStatusMessage.innerText = "✅ Retweet successful!";
+                    retweetButton.style.display = "none";
+                    unlockFeatures();
+                } else {
+                    retweetStatusMessage.innerText = "❌ Retweet failed.";
+                }
+            })
+            .catch(error => console.error("Error:", error));
+    });
 
-            const userId = userData.data.id;
-
-            // Periksa apakah pengguna mengikuti akun target
-            const followResponse = await fetch(`https://api.twitter.com/2/users/${userId}/following`, {
-                headers: { Authorization: `Bearer ${BEARER_TOKEN}` }
-            });
-
-            const followData = await followResponse.json();
-            const isFollowing = followData.data.some(user => user.id === TARGET_TWITTER_ID);
-
-            if (isFollowing) {
-                twitterStatusMessage.innerText = "✅ You are following the required account!";
-            } else {
-                twitterStatusMessage.innerText = "❌ You are not following the required account.";
-            }
-        } catch (error) {
-            console.error("Error verifying Twitter follow:", error);
-            twitterStatusMessage.innerText = "Error verifying Twitter follow.";
-        }
+    // Fungsi untuk membuka fitur setelah verifikasi selesai
+    function unlockFeatures() {
+        walletSection.style.display = "block";
+        checkinPage.style.display = "block";
+        referralPage.style.display = "block";
+        leaderboardPage.style.display = "block";
     }
-
-    verifyTwitterButton.addEventListener("click", verifyTwitterFollow);
 });
     </script>
 </body>
