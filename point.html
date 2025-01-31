@@ -72,60 +72,88 @@ input {
     </div>
 
     <script>
-      const contractAddress = "YOUR_CONTRACT_ADDRESS";
-const contractABI = [
-    // ABI singkat untuk interaksi
-    {
-        "constant": true,
-        "inputs": [{"name": "user", "type": "address"}],
-        "name": "getUserInfo",
-        "outputs": [{"name": "points", "type": "uint256"}, {"name": "streak", "type": "uint256"}, {"name": "lastCheckin", "type": "uint256"}],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "constant": false,
-        "inputs": [],
-        "name": "claimPoints",
-        "outputs": [],
-        "stateMutability": "payable",
-        "type": "function"
-    },
-    {
-        "constant": false,
-        "inputs": [{"name": "to", "type": "address"}, {"name": "amount", "type": "uint256"}],
-        "name": "transfer",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "constant": false,
-        "inputs": [{"name": "_pause", "type": "bool"}],
-        "name": "pauseToken",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [],
-        "name": "getLeaderboard",
-        "outputs": [
-            {"name": "topUsers", "type": "address[5]"},
-            {"name": "topPoints", "type": "uint256[5]"}
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    }
+     const web3 = new Web3(window.ethereum);
+const contractAddress = "0xYourContractAddress";  // Ganti dengan alamat kontrak TPoint
+const contractABI = [ 
+    // Masukkan ABI kontrak TPoint di sini
 ];
 
-let provider, signer, contract;
+const contract = new web3.eth.Contract(contractABI, contractAddress);
+let userAccount;
+const connectButton = document.getElementById("connectWallet");
 
+// **OpBNB Testnet Chain Info**
+const opbnbTestnet = {
+    chainId: "0xFF3", // 4083 (Hex)
+    chainName: "OpBNB Testnet",
+    nativeCurrency: {
+        name: "BNB",
+        symbol: "tBNB",
+        decimals: 18,
+    },
+    rpcUrls: ["https://opbnb-testnet-rpc.bnbchain.org"],
+    blockExplorerUrls: ["https://opbnbscan.com"],
+};
+
+// **Cek Jaringan & Paksa ke OpBNB Testnet**
+async function switchToOpBNB() {
+    try {
+        const currentChainId = await web3.eth.getChainId();
+        if (currentChainId !== 4083) { // Jika bukan OpBNB Testnet
+            await window.ethereum.request({
+                method: "wallet_switchEthereumChain",
+                params: [{ chainId: opbnbTestnet.chainId }],
+            });
+        }
+    } catch (error) {
+        if (error.code === 4902) {
+            await window.ethereum.request({
+                method: "wallet_addEthereumChain",
+                params: [opbnbTestnet],
+            });
+        } else {
+            console.error("Gagal mengganti jaringan:", error);
+        }
+    }
+}
+
+// **Koneksi ke Wallet & Minta Signature**
 async function connectWallet() {
-    if (!window.ethereum) {
-        alert("Metamask not found!");
+    if (typeof window.ethereum === "undefined") {
+        alert("Metamask tidak ditemukan! Silakan instal Metamask.");
         return;
+    }
+
+    try {
+        const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
+        userAccount = accounts[0];
+
+        // Minta signature
+        const message = "Login ke TPoint di OpBNB Testnet";
+        const signature = await web3.eth.personal.sign(message, userAccount, "");
+
+        console.log("Wallet Connected:", userAccount);
+        console.log("Signature:", signature);
+
+        connectButton.innerText = "Disconnect Wallet";
+        connectButton.removeEventListener("click", connectWallet);
+        connectButton.addEventListener("click", disconnectWallet);
+
+        await switchToOpBNB();
+    } catch (error) {
+        console.error("Koneksi wallet gagal:", error);
+    }
+}
+
+// **Diskonek Wallet**
+function disconnectWallet() {
+    userAccount = null;
+    console.log("Wallet Disconnected");
+
+    connectButton.innerText = "Connect Wallet";
+    connectButton.removeEventListener("click", disconnectWallet);
+    connectButton.addEventListener("click", connectWallet);
+}
     }
     provider = new ethers.providers.Web3Provider(window.ethereum);
     await provider.send("eth_requestAccounts", []);
