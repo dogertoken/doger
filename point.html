@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TPoint Dashboard</title>
+    <link rel="stylesheet" href="stes.css">
+    <style>
+      body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+button {
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+input {
+    padding: 10px;
+    margin: 5px;
+    width: 90%;
+}
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.2/ethers.umd.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>TPoint Dashboard</h1>
+
+        <button id="connectWallet">Connect Wallet</button>
+        <p><strong>Wallet:</strong> <span id="walletAddress">Not Connected</span></p>
+
+        <h2>Balance</h2>
+        <p><strong>Your TPT Balance:</strong> <span id="balance">0</span> TPT</p>
+
+        <h2>Check-in</h2>
+        <button id="claimPoints">Claim Points (0.0000753 ETH)</button>
+        <p id="claimStatus"></p>
+
+        <h2>Transfer TPT</h2>
+        <input type="text" id="recipient" placeholder="Recipient Address">
+        <input type="number" id="amount" placeholder="Amount">
+        <button id="transfer">Transfer</button>
+        <p id="transferStatus"></p>
+
+        <h2>Leaderboard</h2>
+        <button id="getLeaderboard">Show Top 5</button>
+        <ul id="leaderboard"></ul>
+
+        <h2>Admin</h2>
+        <button id="togglePause">Toggle Pause</button>
+        <p id="pauseStatus"></p>
+    </div>
+
+    <script>
+      const contractAddress = "YOUR_CONTRACT_ADDRESS";
+const contractABI = [
+    // ABI singkat untuk interaksi
+    {
+        "constant": true,
+        "inputs": [{"name": "user", "type": "address"}],
+        "name": "getUserInfo",
+        "outputs": [{"name": "points", "type": "uint256"}, {"name": "streak", "type": "uint256"}, {"name": "lastCheckin", "type": "uint256"}],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [],
+        "name": "claimPoints",
+        "outputs": [],
+        "stateMutability": "payable",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [{"name": "to", "type": "address"}, {"name": "amount", "type": "uint256"}],
+        "name": "transfer",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [{"name": "_pause", "type": "bool"}],
+        "name": "pauseToken",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [],
+        "name": "getLeaderboard",
+        "outputs": [
+            {"name": "topUsers", "type": "address[5]"},
+            {"name": "topPoints", "type": "uint256[5]"}
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    }
+];
+
+let provider, signer, contract;
+
+async function connectWallet() {
+    if (!window.ethereum) {
+        alert("Metamask not found!");
+        return;
+    }
+    provider = new ethers.providers.Web3Provider(window.ethereum);
+    await provider.send("eth_requestAccounts", []);
+    signer = provider.getSigner();
+    document.getElementById("walletAddress").innerText = await signer.getAddress();
+    contract = new ethers.Contract(contractAddress, contractABI, signer);
+    getBalance();
+}
+
+async function getBalance() {
+    const address = await signer.getAddress();
+    const userInfo = await contract.getUserInfo(address);
+    document.getElementById("balance").innerText = userInfo.points;
+}
+
+async function claimPoints() {
+    try {
+        const tx = await contract.claimPoints({ value: ethers.utils.parseEther("0.0000753") });
+        await tx.wait();
+        document.getElementById("claimStatus").innerText = "Claim successful!";
+        getBalance();
+    } catch (error) {
+        console.error(error);
+        document.getElementById("claimStatus").innerText = "Claim failed!";
+    }
+}
+
+async function transferTokens() {
+    const recipient = document.getElementById("recipient").value;
+    const amount = document.getElementById("amount").value;
+    if (!recipient || !amount) {
+        alert("Fill all fields!");
+        return;
+    }
+
+    try {
+        const tx = await contract.transfer(recipient, ethers.utils.parseUnits(amount, 18));
+        await tx.wait();
+        document.getElementById("transferStatus").innerText = "Transfer successful!";
+        getBalance();
+    } catch (error) {
+        console.error(error);
+        document.getElementById("transferStatus").innerText = "Transfer failed!";
+    }
+}
+
+async function getLeaderboard() {
+    try {
+        const leaderboard = await contract.getLeaderboard();
+        const list = document.getElementById("leaderboard");
+        list.innerHTML = "";
+        leaderboard[0].forEach((user, index) => {
+            if (user !== ethers.constants.AddressZero) {
+                const li = document.createElement("li");
+                li.innerText = `${user} - ${leaderboard[1][index]} TPT`;
+                list.appendChild(li);
+            }
+        });
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+async function togglePause() {
+    try {
+        const tx = await contract.pauseToken(true);
+        await tx.wait();
+        document.getElementById("pauseStatus").innerText = "Pause updated!";
+    } catch (error) {
+        console.error(error);
+        document.getElementById("pauseStatus").innerText = "Pause failed!";
+    }
+}
+
+// Event listeners
+document.getElementById("connectWallet").addEventListener("click", connectWallet);
+document.getElementById("claimPoints").addEventListener("click", claimPoints);
+document.getElementById("transfer").addEventListener("click", transferTokens);
+document.getElementById("getLeaderboard").addEventListener("click", getLeaderboard);
+document.getElementById("togglePause").addEventListener("click", togglePause);
+    </script>
+</body>
+</html>
