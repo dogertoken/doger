@@ -136,8 +136,34 @@ h3 {
 }</style>
 </head>
 <body>
-       
-           
+    <div class="container">
+        <div id="twitterSection">
+            <h3>Twitter Verification</h3>
+            <button id="connectTwitterButton">Connect Twitter</button>
+            <div id="twitterUsername" style="display: none;"></div>
+
+            <button id="followTwitterButton" style="display: none;">Follow Kami</button>
+            <div id="followStatusMessage"></div>
+
+            <button id="retweetButton" style="display: none;">RT Tweet Kami</button>
+            <div id="retweetStatusMessage"></div>
+        </div>
+
+        <!-- Elemen lain yang akan terbuka setelah semua langkah Twitter selesai -->
+        <div id="walletSection" style="display: none;">
+            <button id="connectWalletButton">Connect Wallet</button>
+        </div>
+        <div id="checkinPage" style="display: none;">
+            <h3>Check-In System</h3>
+        </div>
+        <div id="referralPage" style="display: none;">
+            <h3>Referral System</h3>
+        </div>
+        <div id="leaderboardPage" style="display: none;">
+            <h3>Leaderboard</h3>
+        </div>
+    </div>
+    
         <div id="wallet-info">
             <button id="connectButton">Connect Wallet</button>
             <button id="disconnectButton" style="display:none;">Disconnect Wallet</button>
@@ -148,35 +174,7 @@ h3 {
             <h3>Referral Program</h3>
             <div id="referralLink">Your Referral Link: <span id="link"></span></div>
             <div id="totalReferrals">Total Referrals: 0</div>
-  <div class="container">
-    <div id="twitterSection">
-        <h3>Twitter Verification</h3>
-        <button id="connectTwitterButton">Connect Twitter</button>
-        <div id="twitterUsername" style="display: none;"></div>
-
-        <button id="followTwitterButton" style="display: none;">Follow Kami</button>
-        <div id="followStatusMessage"></div>
-
-        <button id="retweetButton" style="display: none;">RT Tweet Kami</button>
-        <div id="retweetStatusMessage"></div>
-    </div>
-
-    <!-- Elemen lain yang akan terbuka setelah semua langkah Twitter selesai -->
-    <div id="walletSection" style="display: none;">
-        <button id="connectWalletButton">Connect Wallet</button>
-    </div>
-    <div id="checkinPage" style="display: none;">
-        <h3>Check-In System</h3>
-    </div>
-    <div id="referralPage" style="display: none;">
-        <h3>Referral System</h3>
-    </div>
-    <div id="leaderboardPage" style="display: none;">
-        <h3>Leaderboard</h3>
-    </div>
-  </div>          <button id="claimButton" disabled>Claim Points</button>
-        </div>
-
+ 
         <div id="leaderboard">
             <h3>Leaderboard</h3>
             <table id="leaderboardTable">
@@ -328,84 +326,44 @@ h3 {
     const referralPage = document.getElementById("referralPage");
     const leaderboardPage = document.getElementById("leaderboardPage");
 
-    let twitterUsername = "";
-
-    // Fungsi untuk menghubungkan Twitter
+    // Login ke Twitter dengan OAuth 2.0
     connectTwitterButton.addEventListener("click", function () {
-        const inputUsername = prompt("Enter your Twitter username (without @):");
-        if (inputUsername) {
-            twitterUsername = inputUsername;
-            fetch(`twitter_api.php?username=${twitterUsername}`)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.error) {
-                        alert("Twitter username not found!");
-                        return;
-                    }
-
-                    twitterUsernameDiv.innerText = `Connected as @${twitterUsername}`;
-                    twitterUsernameDiv.style.display = "block";
-                    connectTwitterButton.style.display = "none";
-                    followTwitterButton.style.display = "inline-block";
-
-                    if (data.is_following) {
-                        followStatusMessage.innerText = "✅ Already following!";
-                        retweetButton.style.display = "inline-block";
-                    } else {
-                        followStatusMessage.innerText = "❌ Not following yet.";
-                    }
-
-                    if (data.has_retweeted) {
-                        retweetStatusMessage.innerText = "✅ Already retweeted!";
-                        unlockFeatures();
-                    } else {
-                        retweetStatusMessage.innerText = "❌ Not retweeted yet.";
-                    }
-                })
-                .catch(error => console.error("Error:", error));
-        }
+        window.location.href = "twitter_login.php"; // Arahkan ke PHP untuk autentikasi
     });
 
-    // Fungsi untuk memeriksa ulang setelah follow
-    followTwitterButton.addEventListener("click", function () {
-        fetch(`twitter_api.php?username=${twitterUsername}`)
-            .then(response => response.json())
-            .then(data => {
-                if (data.is_following) {
-                    followStatusMessage.innerText = "✅ Follow successful!";
-                    followTwitterButton.style.display = "none";
-                    retweetButton.style.display = "inline-block";
-                } else {
-                    followStatusMessage.innerText = "❌ Still not following.";
-                }
-            })
-            .catch(error => console.error("Error:", error));
-    });
+    // Mengecek status follow dan retweet setelah login
+    fetch("twitter_status.php")
+        .then(response => response.json())
+        .then(data => {
+            if (data.username) {
+                twitterUsernameDiv.innerText = `Connected as @${data.username}`;
+                twitterUsernameDiv.style.display = "block";
+                connectTwitterButton.style.display = "none";
+                followTwitterButton.style.display = "inline-block";
+            }
 
-    // Fungsi untuk memeriksa ulang setelah retweet
-    retweetButton.addEventListener("click", function () {
-        fetch(`twitter_api.php?username=${twitterUsername}`)
-            .then(response => response.json())
-            .then(data => {
-                if (data.has_retweeted) {
-                    retweetStatusMessage.innerText = "✅ Retweet successful!";
-                    retweetButton.style.display = "none";
-                    unlockFeatures();
-                } else {
-                    retweetStatusMessage.innerText = "❌ Retweet failed.";
-                }
-            })
-            .catch(error => console.error("Error:", error));
-    });
+            if (data.is_following) {
+                followStatusMessage.innerText = "✅ Already following!";
+                retweetButton.style.display = "inline-block";
+            } else {
+                followStatusMessage.innerText = "❌ Not following yet.";
+            }
 
-    // Fungsi untuk membuka fitur setelah verifikasi selesai
+            if (data.has_retweeted) {
+                retweetStatusMessage.innerText = "✅ Already retweeted!";
+                unlockFeatures();
+            } else {
+                retweetStatusMessage.innerText = "❌ Not retweeted yet.";
+            }
+        })
+        .catch(error => console.error("Error:", error));
+
     function unlockFeatures() {
         walletSection.style.display = "block";
         checkinPage.style.display = "block";
         referralPage.style.display = "block";
         leaderboardPage.style.display = "block";
     }
-});
-    </script>
+});</script>
 </body>
 </html>
