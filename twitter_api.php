@@ -2,9 +2,9 @@
 header("Content-Type: application/json");
 
 // Masukkan Bearer Token Twitter API kamu di sini
-$bearer_token = "YOUR_TWITTER_BEARER_TOKEN";
-$target_twitter_id = "TARGET_TWITTER_ID"; // ID akun Twitter yang harus difollow
-$tweet_id = "TWEET_ID"; // ID tweet yang harus di-retweet
+$bearer_token = "AAAAAAAAAAAAAAAAAAAAALd0ygEAAAAATxxxvo%2Fp%2BpO9clq9e%2B2EFhyFwWY%3DM8VxYUYLM4dEPqw5ZspO8al8RIKCcDxo7z8TxRC6hmMLMPcWlM";
+$target_twitter_id = "1611031952337043457"; // ID akun Twitter yang harus difollow
+$tweet_id = "1879860843652984927"; // ID tweet yang harus di-retweet
 
 // Fungsi untuk mengambil data dari Twitter API
 function getTwitterData($endpoint, $params = []) {
