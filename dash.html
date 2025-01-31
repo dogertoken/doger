@@ -293,6 +293,59 @@ h3 {
 
     connectButton.addEventListener("click", connectWallet);
     disconnectButton.addEventListener("click", disconnectWallet);
-});</script>
+});
+    // Untuk Twitter 
+    document.addEventListener("DOMContentLoaded", function () {
+    const verifyTwitterButton = document.getElementById("verifyTwitterButton");
+    const twitterHandleInput = document.getElementById("twitterHandleInput");
+    const twitterStatusMessage = document.getElementById("twitterStatusMessage");
+
+    // Gantilah dengan Bearer Token dari Twitter API Anda
+    const BEARER_TOKEN = "YOUR_TWITTER_BEARER_TOKEN";
+    const TARGET_TWITTER_ID = "123456789"; // Ganti dengan ID akun Twitter yang harus diikuti
+
+    async function verifyTwitterFollow() {
+        const twitterHandle = twitterHandleInput.value.trim();
+        if (!twitterHandle) {
+            twitterStatusMessage.innerText = "Please enter your Twitter handle.";
+            return;
+        }
+
+        try {
+            // Ambil user ID dari Twitter handle
+            const userResponse = await fetch(`https://api.twitter.com/2/users/by/username/${twitterHandle}`, {
+                headers: { Authorization: `Bearer ${BEARER_TOKEN}` }
+            });
+
+            const userData = await userResponse.json();
+            if (!userData.data) {
+                twitterStatusMessage.innerText = "Invalid Twitter handle.";
+                return;
+            }
+
+            const userId = userData.data.id;
+
+            // Periksa apakah pengguna mengikuti akun target
+            const followResponse = await fetch(`https://api.twitter.com/2/users/${userId}/following`, {
+                headers: { Authorization: `Bearer ${BEARER_TOKEN}` }
+            });
+
+            const followData = await followResponse.json();
+            const isFollowing = followData.data.some(user => user.id === TARGET_TWITTER_ID);
+
+            if (isFollowing) {
+                twitterStatusMessage.innerText = "✅ You are following the required account!";
+            } else {
+                twitterStatusMessage.innerText = "❌ You are not following the required account.";
+            }
+        } catch (error) {
+            console.error("Error verifying Twitter follow:", error);
+            twitterStatusMessage.innerText = "Error verifying Twitter follow.";
+        }
+    }
+
+    verifyTwitterButton.addEventListener("click", verifyTwitterFollow);
+});
+    </script>
 </body>
 </html>
