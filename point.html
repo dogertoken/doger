@@ -47,7 +47,11 @@ input {
         <h1>TPoint Dashboard</h1>
 
         <button id="connectWallet">Connect Wallet</button>
-        <p><strong>Wallet:</strong> <span id="walletAddress">Not Connected</span></p>
+<p>Balance: <span id="balance">0</span> TPT</p>
+<input type="text" id="recipient" placeholder="Recipient Address">
+<input type="number" id="amount" placeholder="Amount">
+<button id="transferBtn">Transfer TPT</button>
+<p id="status"></p>
 
         <h2>Balance</h2>
         <p><strong>Your TPT Balance:</strong> <span id="balance">0</span> TPT</p>
@@ -140,6 +144,7 @@ async function connectWallet() {
         connectButton.addEventListener("click", disconnectWallet);
 
         await switchToOpBNB();
+        await getBalance(); // Ambil saldo setelah koneksi
     } catch (error) {
         console.error("Koneksi wallet gagal:", error);
     }
@@ -150,24 +155,57 @@ function disconnectWallet() {
     userAccount = null;
     console.log("Wallet Disconnected");
 
+    document.getElementById("balance").innerText = "0"; // Reset saldo
     connectButton.innerText = "Connect Wallet";
     connectButton.removeEventListener("click", disconnectWallet);
     connectButton.addEventListener("click", connectWallet);
 }
+
+// **Transfer TPT Token**
+async function transferTPT() {
+    const recipient = document.getElementById("recipient").value;
+    const amount = document.getElementById("amount").value;
+    
+    if (!recipient || !amount) {
+        alert("Harap isi alamat penerima dan jumlah token!");
+        return;
     }
-    provider = new ethers.providers.Web3Provider(window.ethereum);
-    await provider.send("eth_requestAccounts", []);
-    signer = provider.getSigner();
-    document.getElementById("walletAddress").innerText = await signer.getAddress();
-    contract = new ethers.Contract(contractAddress, contractABI, signer);
-    getBalance();
+
+    try {
+        await contract.methods.transfer(recipient, amount).send({ from: userAccount });
+        document.getElementById("status").innerText = "Transfer berhasil!";
+        await getBalance(); // Perbarui saldo setelah transfer
+    } catch (error) {
+        document.getElementById("status").innerText = "Transfer gagal!";
+    }
 }
 
+// **Fungsi untuk Mendapatkan Saldo**
 async function getBalance() {
-    const address = await signer.getAddress();
-    const userInfo = await contract.getUserInfo(address);
-    document.getElementById("balance").innerText = userInfo.points;
+    if (!userAccount) return;
+    try {
+        const userInfo = await contract.methods.getUserInfo(userAccount).call();
+        document.getElementById("balance").innerText = userInfo[0]; // Ambil nilai "points"
+    } catch (error) {
+        console.error("Gagal mendapatkan saldo:", error);
+    }
 }
+
+// **Pasang Event Listener**
+document.getElementById("transferBtn").addEventListener("click", transferTPT);
+connectButton.addEventListener("click", connectWallet);
+
+// **Cek Koneksi Saat Load**
+window.onload = async () => {
+    if (window.ethereum && window.ethereum.selectedAddress) {
+        userAccount = window.ethereum.selectedAddress;
+        connectButton.innerText = "Disconnect Wallet";
+        connectButton.removeEventListener("click", connectWallet);
+        connectButton.addEventListener("click", disconnectWallet);
+        await switchToOpBNB();
+        await getBalance(); // Ambil saldo saat reload halaman
+    }
+};
 
 async function claimPoints() {
     try {
