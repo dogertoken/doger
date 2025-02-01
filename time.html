@@ -1,50 +1,64 @@
-<style>
-  #status {
-    font-size: 18px;
-    font-weight: bold;
-    margin-top: 10px;
-    color: #ffffff;
-    background-color: #222;
-    padding: 10px;
-    border-radius: 5px;
-    display: inline-block;
-}
-
-#checkinButton:disabled {
-    background-color: gray;
-    cursor: not-allowed;
-}
-</style>
-
-<p id="countdown">Loading next claim time...</p>
-
-<script>
-  async function updateCountdown() {
-    if (contract && userAccount) {
-        try {
-            const lastCheckIn = await contract.methods._lastCheckIn(userAccount).call();
-            const currentTime = Math.floor(Date.now() / 1000);
-            const nextCheckInTime = Number(lastCheckIn) + 86400;
-            
-            if (currentTime < nextCheckInTime) {
-                const timeLeft = nextCheckInTime - currentTime;
-                const hours = Math.floor(timeLeft / 3600);
-                const minutes = Math.floor((timeLeft % 3600) / 60);
-                const seconds = timeLeft % 60;
-                
-                document.getElementById("status").innerText = `Next claim in: ${hours}h ${minutes}m ${seconds}s`;
-                document.getElementById("checkinButton").disabled = true;
-            } else {
-                document.getElementById("status").innerText = "You can claim now!";
-                document.getElementById("checkinButton").disabled = false;
-            }
-        } catch (error) {
-            console.error("Error checking next claim time:", error);
-            document.getElementById("status").innerText = "Error checking next claim time.";
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Next Claim</title>
+    <style>
+        #status {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+            color: #ffffff;
+            background-color: #222;
+            padding: 10px;
+            border-radius: 5px;
+            display: inline-block;
         }
-    }
-}
 
-// Update countdown setiap detik
-setInterval(updateCountdown, 1000);
-</script>
+        #checkinButton:disabled {
+            background-color: gray;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <button id="checkinButton">Claim</button>
+    <div id="status">Loading next claim time...</div>
+
+    <script>
+        const claimInterval = 24 * 60 * 60 * 1000; // 24 jam dalam milidetik
+        const statusDiv = document.getElementById("status");
+        const checkinButton = document.getElementById("checkinButton");
+
+        function updateCountdown() {
+            const nextClaimTime = localStorage.getItem("nextClaimTime");
+            const now = Date.now();
+
+            if (nextClaimTime && now < nextClaimTime) {
+                const remainingTime = nextClaimTime - now;
+                const hours = Math.floor(remainingTime / (1000 * 60 * 60));
+                const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+
+                statusDiv.innerText = `Next claim in: ${hours}h ${minutes}m ${seconds}s`;
+                checkinButton.disabled = true;
+            } else {
+                statusDiv.innerText = "You can claim now!";
+                checkinButton.disabled = false;
+            }
+        }
+
+        function claimReward() {
+            const nextClaimTime = Date.now() + claimInterval;
+            localStorage.setItem("nextClaimTime", nextClaimTime);
+            updateCountdown();
+        }
+
+        checkinButton.addEventListener("click", claimReward);
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
