@@ -4,49 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tokenomics Donut Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.0.0-beta.55/dist/web3.min.js"></script>
     <style>
-        /* Set background color to black */
+        /* Body and layout */
         body {
             font-family: Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #111; /* Dark background */
+            background-color: #111;
             margin: 0;
             color: #fff;
         }
 
-        /* Container for the donut chart */
         .donut-chart-container {
             position: relative;
-            width: 350px; /* Adjusted width */
-            height: 350px; /* Adjusted height */
+            width: 350px;
+            height: 350px;
             border-radius: 50%;
             background: conic-gradient(
-                rgba(255, 165, 0, 1) 0% 0.017%,  /* Oren gradient untuk minted */
-                rgba(60, 60, 60, 1) 0.017% 100%  /* Abu-abu untuk unminted */
+                rgba(255, 165, 0, 1) 0% 0.017%,
+                rgba(60, 60, 60, 1) 0.017% 100%
             );
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6), inset 0 4px 10px rgba(0, 0, 0, 0.3);
             display: flex;
             justify-content: center;
             align-items: center;
-            transform: rotate(90deg); /* Slight rotation for better visual */
+            transform: rotate(90deg);
             margin: 20px;
         }
 
-        /* Inner circle to create the donut effect */
         .donut-inner {
             position: absolute;
-            top: 45px; /* Adjusted to make the donut ring thicker */
-            left: 45px; /* Adjusted to make the donut ring thicker */
-            width: 260px; /* Adjusted inner width */
-            height: 260px; /* Adjusted inner height */
+            top: 45px;
+            left: 45px;
+            width: 260px;
+            height: 260px;
             border-radius: 50%;
-            background-color: #111; /* Dark background inside donut */
+            background-color: #111;
         }
 
-        /* Text styling inside the donut */
         .donut-text {
             position: absolute;
             font-size: 18px;
@@ -57,7 +55,6 @@
             letter-spacing: 2px;
         }
 
-        /* Tokenomics Info below the donut */
         .tokenomics-info {
             text-align: center;
             margin-top: 20px;
@@ -65,7 +62,6 @@
             color: #fff;
         }
 
-        /* Label for distribution information */
         .donut-label {
             font-size: 14px;
             color: #ddd;
@@ -79,9 +75,9 @@
 
     <div>
         <!-- Donut chart with inner circle and text -->
-        <div class="donut-chart-container">
+        <div class="donut-chart-container" id="donutChart">
             <div class="donut-inner"></div>
-            <div class="donut-text">Minted: 0.017%</div>
+            <div class="donut-text" id="mintedText">Minted: 0%</div>
         </div>
 
         <!-- Tokenomics Info -->
@@ -90,6 +86,47 @@
             <p class="donut-label">Distribusi Token: Fair Launch untuk Komunitas</p>
         </div>
     </div>
+
+    <script>
+        // Inisialisasi Web3 untuk menghubungkan ke OPBNB Testnet
+        const web3 = new Web3('https://opbnb-testnet-rpc.bnbchain.org/'); // RPC OPBNB Testnet
+
+        const contractAddress = '0xf70C807DEE3bc21eb7732919Edcca4d290083474'; // Ganti dengan alamat kontrak token
+        const contractABI = [{"inputs":[{"internalType":"address payable","name":"_taxCollector","type":"address"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"spender","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"EtherWithdrawn","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"TokenBurned","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"taxPaid","type":"uint256"}],"name":"TokenMinted","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"TokensWithdrawn","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Transfer","type":"event"},{"inputs":[],"name":"BURN_PERCENTAGE","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"NET_TAX_PER_100000","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"TOKENS_PER_MINT","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"spender","type":"address"}],"name":"allowance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"approve","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"burn","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address payable","name":"newTaxCollector","type":"address"}],"name":"changeTaxCollector","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"decimals","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"mintToken","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"taxCollector","outputs":[{"internalType":"address payable","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transfer","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transferFrom","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"withdrawEther","outputs":[],"stateMutability":"nonpayable","type":"function"}];
+
+        const contract = new web3.eth.Contract(contractABI, contractAddress);
+
+        // Fungsi untuk mendapatkan jumlah token yang sudah terminting
+        async function getMintedSupply() {
+            try {
+                const totalSupply = await contract.methods.totalSupply().call();
+                const mintedSupply = await contract.methods.mintedSupply().call(); // Misal ada fungsi mintedSupply() untuk token yang minting
+                const mintedPercentage = (mintedSupply / totalSupply) * 100;
+                updateDonutChart(mintedPercentage);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+
+        // Fungsi untuk memperbarui Donut Chart
+        function updateDonutChart(mintedPercentage) {
+            // Update progress bar dan teks
+            const chartElement = document.getElementById('donutChart');
+            const donutText = document.getElementById('mintedText');
+
+            // Set warna berdasarkan mintedPercentage
+            chartElement.style.background = `conic-gradient(
+                rgba(255, 165, 0, 1) 0% ${mintedPercentage}%, 
+                rgba(60, 60, 60, 1) ${mintedPercentage}% 100%
+            )`;
+            
+            donutText.textContent = `Minted: ${mintedPercentage.toFixed(2)}%`;
+        }
+
+        // Ambil data setiap 5 detik
+        setInterval(getMintedSupply, 5000);
+
+    </script>
 
 </body>
 </html>
