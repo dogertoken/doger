@@ -20,12 +20,12 @@
         /* Container for the donut chart */
         .donut-chart-container {
             position: relative;
-            width: 300px;
-            height: 300px;
+            width: 350px; /* Adjusted width */
+            height: 350px; /* Adjusted height */
             border-radius: 50%;
             background: conic-gradient(
-                rgba(76, 175, 80, 1) 0% 0.017%,  /* Minted token section */
-                rgba(100, 100, 100, 1) 0.017% 100%  /* Unminted token section */
+                rgba(255, 165, 0, 1) 0% 0.017%,  /* Oren gradient untuk minted */
+                rgba(60, 60, 60, 1) 0.017% 100%  /* Abu-abu untuk unminted */
             );
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6), inset 0 4px 10px rgba(0, 0, 0, 0.3);
             display: flex;
@@ -38,10 +38,10 @@
         /* Inner circle to create the donut effect */
         .donut-inner {
             position: absolute;
-            top: 35px; /* Slightly smaller size for inner circle */
-            left: 35px;
-            width: 230px;
-            height: 230px;
+            top: 45px; /* Adjusted to make the donut ring thicker */
+            left: 45px; /* Adjusted to make the donut ring thicker */
+            width: 260px; /* Adjusted inner width */
+            height: 260px; /* Adjusted inner height */
             border-radius: 50%;
             background-color: #111; /* Dark background inside donut */
         }
