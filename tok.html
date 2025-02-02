@@ -82,6 +82,37 @@ p {
     line-height: 1.5;
  
 }
+  @media (min-width: 1024px) { 
+    .container {
+        max-width: 700px; /* Lebar lebih besar agar lebih pas di PC */
+        padding: 30px; /* Sedikit lebih lega */
+    }
+
+    canvas {
+        max-width: 500px !important; /* Chart lebih besar di PC */
+    }
+
+    .description {
+        max-width: 700px; /* Lebar deskripsi menyesuaikan */
+        padding: 30px;
+    }
+
+    .container h1 {
+        font-size: 28px; /* Judul lebih besar agar proporsional di PC */
+    }
+
+    #mintedPercentage {
+        font-size: 20px; /* Teks Minted lebih jelas di layar besar */
+    }
+
+    .description h2 {
+        font-size: 24px;
+    }
+
+    .description p {
+        font-size: 18px;
+    }
+  }
     </style>
 </head>
 <body>
