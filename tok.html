@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="eng">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tokenomics Chart</title>
+    <title>Doger Portal Tokenomics Chart</title>
+    <link href="logo.png" rel="icon">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.7.5/web3.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="stylescss">
+    <link rel="stylesheet" href="noscript.css">
     <style>
         body {
     background-color: #121212;
@@ -84,20 +85,21 @@ p {
 <body>
 
     <div class="container">
-    <h1>Tokenomics</h1>
+    <h1>Doger Tokenomics</h1>
     <canvas id="donutChart"></canvas>
     <p id="mintedPercentage">Minted: 0%</p>
 </div>
 
 <!-- Section Deskripsi -->
 <div class="description">
-    <h2>Distribusi Token</h2>
+    <h2>Token Distribution</h2>
     <p>
         Max Supply: <strong>10,000,000,000</strong><br>
-        Semua token didistribusikan secara adil (<strong>100% Fair Launch</strong>) untuk komunitas.<br>
-        Tidak ada pre-minting atau alokasi khusus.
+        <br><br>All tokens are distributed fairly (<strong>100% Fair Launch</strong>).<br> There is no special allocation.
     </p>
 </div>
+
+ <script src="noscript.js"></script>
 
     <script>
         const maxSupply = 10000000000; // 10 Miliar Token
