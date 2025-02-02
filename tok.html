@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tokenomics Donut Chart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+
+        .donut-chart-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: conic-gradient(
+                #4caf50 0% 0.017%, /* token minted (0.017%) */
+                #ddd 0.017% 100% /* remainder for the non-minted tokens */
+            );
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .donut-chart-container::before {
+            content: "Tokenomik";
+            position: absolute;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .donut-chart-label {
+            position: absolute;
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="donut-chart-container">
+        <div class="donut-chart-label">
+            <p>Minted: 0.017%</p>
+            <p>Total Supply: 10,000,000,000</p>
+        </div>
+    </div>
+</body>
+</html>
