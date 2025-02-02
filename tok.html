@@ -35,9 +35,8 @@
 }
 
 canvas {
-    width: 100% !important;
-    height: auto !important;
-    max-width: 400px;
+    width: 100% !important; /* Agar canvas mengikuti lebar kontainer */
+    height: auto !important; /* Menjaga proporsi gambar tetap sesuai */
     margin: auto;
 }
 
@@ -81,6 +80,11 @@ p {
     font-size: 16px;
     line-height: 1.5;
 }
+   @media (min-width: 768px) {
+    canvas {
+        max-width: 80%; /* Untuk layar lebih besar, bisa sesuaikan ukuran canvas */
+    }
+   }
     </style>
 </head>
 <body>
