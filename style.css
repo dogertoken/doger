@@ -22,13 +22,24 @@ nav {
     padding: 12px 20px;
     position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 1000;
-    border-radius: 12px;
+    border-radius: 0; /* Agar melebar penuh */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Pastikan isi navbar tetap rapi */
+.nav-container {
+    width: 90%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
 }
 
 /* Logo */
@@ -41,7 +52,7 @@ nav {
 /* Menu */
 .nav-menu {
     display: flex;
-    gap: 15px; /* Jarak antar menu */
+    gap: 20px; /* Jarak antar menu */
 }
 
 .nav-menu a {
@@ -57,13 +68,44 @@ nav {
     border-radius: 8px;
 }
 
-/* Responsif untuk mobile */
+/* Hero Section */
+#hero {
+    text-align: center;
+    padding: 150px 20px 70px; /* Tambahkan padding-top agar tidak tertutup navbar */
+    width: 80%;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4));
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+#hero h1 {
+    color: #ff7f00;
+    font-size: 3rem;
+    text-shadow: 3px 3px 10px rgba(255, 127, 0, 0.6);
+}
+
+/* Section */
+section {
+    padding: 60px 20px;
+    text-align: center;
+    width: 80%;
+    background: rgba(50, 50, 50, 0.5);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsif */
 @media (max-width: 768px) {
     nav {
         flex-direction: column;
-        align-items: center;
         text-align: center;
         padding: 10px;
+    }
+
+    .nav-container {
+        flex-direction: column;
+        width: 100%;
     }
 
     .logo {
@@ -80,172 +122,14 @@ nav {
     .nav-menu a {
         display: block;
         width: 100%;
-    }
-}
-
-/* ========== Hero Section ========== */
-#hero {
-    text-align: center;
-    padding: 120px 20px 70px;
-    width: 80%;
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4));
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-}
-
-#hero h1 {
-    color: #ff7f00;
-    font-size: 3rem;
-    text-shadow: 3px 3px 10px rgba(255, 127, 0, 0.6);
-}
-
-#hero p {
-    font-size: 1.2rem;
-    color: #e5e5e5;
-}
-
-/* ========== Section Styling ========== */
-section {
-    padding: 60px 20px;
-    text-align: center;
-    width: 80%;
-    background: rgba(50, 50, 50, 0.5);
-    backdrop-filter: blur(10px);
-    border-radius: 12px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-}
-
-/* ========== Button ========== */
-button {
-    background: linear-gradient(135deg, #ff7f00, #ff5722);
-    color: white;
-    border: none;
-    padding: 14px 28px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(255, 127, 0, 0.5);
-    position: relative;
-    overflow: hidden;
-}
-
-button::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.2);
-    transition: all 0.4s;
-}
-
-button:hover::before {
-    left: 100%;
-}
-
-button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 20px rgba(255, 127, 0, 0.6);
-}
-
-/* ========== Wallet Info ========== */
-#walletInfo, #connectWallet, #mintSection {
-    background: rgba(60, 60, 60, 0.5);
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-    max-width: 400px;
-    margin: auto;
-}
-
-
-
-/* ========== Footer ========== */
-footer {
-    background: rgba(30, 58, 138, 0.9);
-    color: white;
-    text-align: center;
-    padding: 20px;
-    margin-top: 50px;
-    width: 100%;
-    border-radius: 12px 12px 0 0;
-    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
-}
-
-/* ========== Social Links ========== */
-.social-links {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.social-links a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.2); /* Latar belakang transparan */
-    color: white;
-    font-size: 1.8rem;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-}
-
-.social-links a:hover {
-    background: rgba(255, 255, 255, 0.4);
-    transform: scale(1.1);
-    box-shadow: 0 6px 15px rgba(255, 255, 255, 0.3);
-}
-
-/* Untuk tampilan lebih kecil */
-@media (max-width: 768px) {
-    .social-links a {
-        width: 40px;
-        height: 40px;
-        font-size: 1.5rem;
-    }
-}
-
-/* ========== Efek Neon untuk Judul ========== */
-h1, h2 {
-    font-weight: bold;
-    color: #ff7f00;
-    text-shadow: 0 0 10px #ff7f00, 0 0 20px #ff5722, 0 0 30px #ff4500;
-}
-
-/* ========== Responsiveness ========== */
-@media (max-width: 768px) {
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        background: rgba(30, 58, 138, 0.9);
-        position: absolute;
-        top: 60px;
-        right: 20px;
-        width: 200px;
-        border-radius: 8px;
-        text-align: center;
+        padding: 10px 0;
     }
 
-    .nav-links.show {
-        display: flex;
-    }
-
-    .menu-toggle {
-        display: block;
+    #hero {
+        padding: 180px 15px 50px; /* Tambah lebih banyak padding-top */
     }
 
     h1 {
         font-size: 2.5rem;
-    }
-
-    button {
-        width: 100%;
     }
 }
