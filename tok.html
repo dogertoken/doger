@@ -9,74 +9,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.7.5/web3.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="noscript.css">
-    <style>
-        body {
-    background-color: #121212;
-    color: white;
-    font-family: "Baloo 2", sans-serif;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Agar selalu berada di tengah layar */
-}
-
-/* Container dan description untuk tampilan umum */
-.container, .description {
-    width: 90%;
-    max-width: 500px;
-    padding: 20px;
-    box-shadow: 0px 0px 20px rgba(255, 165, 0, 0.5); /* Efek glow orange */
-    border-radius: 10px;
-    background: rgba(255, 165, 0, 0.1); /* Efek transparan */
-}
-
-/* Canvas untuk responsif */
-canvas {
-    width: 100% !important; /* Agar canvas mengikuti lebar kontainer */
-    height: auto !important; /* Menjaga proporsi gambar tetap sesuai */
-    margin: auto;
-}
-
-p {
-    font-size: 18px;
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-.container h1 {
-    color: orange; /* Warna tulisan Tokenomics */
-    text-align: center;
-    font-size: 24px;
-    font-weight: bold;
-}
-
-#mintedPercentage {
-    color: green; /* Warna tulisan Minted */
-    text-align: center;
-    font-size: 18px;
-    font-weight: bold;
-}
-
-.description h2 {
-    font-size: 22px;
-    margin-bottom: 10px;
-    color: orange;
-}
-
-.description p {
-    font-size: 16px;
-    line-height: 1.5;
-}
-
-/* Media Query untuk responsif tampilan pada perangkat dengan lebar layar lebih besar (PC) */
-@media (min-width: 768px) {
-    .container, .description {
+    <style>   
 body {
-    background-color: #121212;
-    body {
     background-color: #121212;
     color: white;
     font-family: "Baloo 2", sans-serif;
