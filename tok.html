@@ -5,69 +5,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tokenomics Donut Chart</title>
     <style>
-        /* Set the basic styles for the body */
+        /* Set background color to black */
         body {
             font-family: Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f4f4f4;
+            background-color: #111; /* Dark background */
             margin: 0;
+            color: #fff;
         }
 
         /* Container for the donut chart */
         .donut-chart-container {
             position: relative;
-            width: 250px;
-            height: 250px;
+            width: 300px;
+            height: 300px;
             border-radius: 50%;
             background: conic-gradient(
-                #4caf50 0% 0.017%,  /* Token minted (0.017%) */
-                #ddd 0.017% 100%    /* Remaining supply */
+                rgba(76, 175, 80, 1) 0% 0.017%,  /* Minted token section */
+                rgba(100, 100, 100, 1) 0.017% 100%  /* Unminted token section */
             );
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6), inset 0 4px 10px rgba(0, 0, 0, 0.3);
             display: flex;
             justify-content: center;
             align-items: center;
-            transform: rotate(90deg); /* Slight rotation for a better visual */
+            transform: rotate(90deg); /* Slight rotation for better visual */
             margin: 20px;
         }
 
         /* Inner circle to create the donut effect */
         .donut-inner {
             position: absolute;
-            top: 25px; /* Inner circle size */
-            left: 25px;
-            width: 200px;
-            height: 200px;
+            top: 35px; /* Slightly smaller size for inner circle */
+            left: 35px;
+            width: 230px;
+            height: 230px;
             border-radius: 50%;
-            background-color: #fff;
-            box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: #111; /* Dark background inside donut */
         }
 
         /* Text styling inside the donut */
         .donut-text {
             position: absolute;
-            font-size: 16px;
+            font-size: 18px;
             font-weight: bold;
-            color: #333;
+            color: #fff;
             text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
-        /* Styling for the labels outside the donut */
-        .donut-label {
-            font-size: 14px;
-            color: #555;
-            text-align: center;
-        }
-
-        /* Container for the tokenomics data below the donut */
+        /* Tokenomics Info below the donut */
         .tokenomics-info {
             text-align: center;
-            margin-top: 15px;
+            margin-top: 20px;
             font-weight: bold;
-            color: #333;
+            color: #fff;
+        }
+
+        /* Label for distribution information */
+        .donut-label {
+            font-size: 14px;
+            color: #ddd;
+            margin-top: 10px;
+            letter-spacing: 1px;
         }
 
     </style>
@@ -84,7 +87,7 @@
         <!-- Tokenomics Info -->
         <div class="tokenomics-info">
             <p>Total Supply: 10,000,000,000</p>
-            <p>Distribusi Token: Fair Launch untuk Komunitas</p>
+            <p class="donut-label">Distribusi Token: Fair Launch untuk Komunitas</p>
         </div>
     </div>
 
