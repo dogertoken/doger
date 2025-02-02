@@ -25,7 +25,8 @@
     height: 100vh; /* Agar selalu berada di tengah layar */
 }
 
-.container {
+/* Container dan description untuk tampilan umum */
+.container, .description {
     width: 90%;
     max-width: 500px;
     padding: 20px;
@@ -34,6 +35,7 @@
     background: rgba(255, 165, 0, 0.1); /* Efek transparan */
 }
 
+/* Canvas untuk responsif */
 canvas {
     width: 100% !important; /* Agar canvas mengikuti lebar kontainer */
     height: auto !important; /* Menjaga proporsi gambar tetap sesuai */
@@ -46,40 +48,69 @@ p {
     margin-top: 10px;
 }
 
-    .container h1 {
+.container h1 {
     color: orange; /* Warna tulisan Tokenomics */
     text-align: center;
     font-size: 24px;
     font-weight: bold;
 }
 
-  #mintedPercentage {
+#mintedPercentage {
     color: green; /* Warna tulisan Minted */
     text-align: center;
     font-size: 18px;
     font-weight: bold;
 }
 
-  .description {
-    width: 90%;
-    max-width: 500px;
-    padding: 20px;
-    margin-top: 20px;
-    text-align: center;
-    background: rgba(255, 165, 0, 0.1); /* Efek transparan */
-    box-shadow: 0px 0px 20px rgba(255, 165, 0, 0.5); /* Glow orange */
-    border-radius: 10px;
-    color: white;
-}
-  .description h2 {
+.description h2 {
     font-size: 22px;
     margin-bottom: 10px;
     color: orange;
 }
-  .description p {
+
+.description p {
     font-size: 16px;
     line-height: 1.5;
-  
+}
+
+/* Media Query untuk responsif tampilan pada perangkat dengan lebar layar lebih besar (PC) */
+@media (min-width: 768px) {
+    .container, .description {
+        max-width: 700px; /* Lebar lebih besar untuk tampilan PC */
+        padding: 30px; /* Lebih banyak ruang padding pada PC */
+    }
+
+    .container h1 {
+        font-size: 28px; /* Menambah ukuran font pada PC */
+    }
+
+    .description h2 {
+        font-size: 26px; /* Menambah ukuran font judul deskripsi pada PC */
+    }
+
+    .description p {
+        font-size: 18px; /* Menambah ukuran font teks deskripsi pada PC */
+    }
+}
+
+/* Media Query untuk responsif tampilan pada perangkat dengan lebar layar lebih kecil (HP) */
+@media (max-width: 768px) {
+    .container, .description {
+        max-width: 90%; /* Menggunakan 90% dari lebar layar untuk tampilan HP */
+        padding: 15px; /* Lebih sedikit padding pada HP */
+    }
+
+    .container h1 {
+        font-size: 20px; /* Menyesuaikan ukuran font judul pada HP */
+    }
+
+    .description h2 {
+        font-size: 20px; /* Menyesuaikan ukuran font judul deskripsi pada HP */
+    }
+
+    .description p {
+        font-size: 14px; /* Menyesuaikan ukuran font teks deskripsi pada HP */
+    }
 }
     </style>
 </head>
