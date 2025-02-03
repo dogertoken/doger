@@ -102,7 +102,6 @@ if (window.ethereum) {
             const result = await minterInstance.methods.mintToken().send({
                 from: currentAccount,
                 value: mintPrice,
-                gas: gasPrice,
             });
         const mintPrice = web3.utils.toWei(MINT_PRICE, 'ether');
 
