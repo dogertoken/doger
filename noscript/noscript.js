@@ -103,7 +103,6 @@ if (window.ethereum) {
                 from: currentAccount,
                 value: mintPrice,
             });
-        const mintPrice = web3.utils.toWei(MINT_PRICE, 'ether');
 
             console.log("Minting result:", result);
             document.getElementById("status").innerText = "Minting succeeded!";
