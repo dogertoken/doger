@@ -122,6 +122,26 @@ p {
     <p>
         Max Supply: <strong>10,000,000,000 Fix</strong><br><br> All tokens are distributed fairly. (<strong>100% Fair Launch</strong>)<br> There is no special allocation.
     </p>
+    <h2>Information</h2>
+    <p>(name = "Doger")
+<br>
+(symbol = "DOGER")
+<br>
+(decimals = 18)
+<br><br>
+Maximum Supply: 10 billion (MAX_SUPPLY = 10_000_000_000 * 10^18) <br><br> Initial Supply Starts from Zero: Token supply must be minted first.</p>
+<h2>Feature</h2>
+<p><strong>Transfer and Burn</strong> <br><br> ERC20 Standard Transfer: Can transfer tokens from one address to another. <br><br> Burn (1% Burn per Transfer): <br><br> Each transfer, 1% of the transaction amount will be burned (BURN_PERCENTAGE = 1). <br><br> For example, if you send 100 DOGER, then 1 DOGER will be burned, and the recipient will only get 99 DOGER.</p>
+<h2>Minting Public Tokens</h2>
+<p>Each token printed by the minter is entitled to receive NET_TAX_PER_100000 DOGER every time minting takes place (TOKENS_PER_MINT = 100000 * 10^18). <br><br> There is a maximum supply limit (MAX_SUPPLY) of 10,000,000,000 tokens. If the total supply reaches this limit, the minting process will end.</p>
+<h2>Approve & Transfer From</h2>
+<p>The allowance & approve function allows users to give permission to other parties to use their tokens. <br><br> transferFrom can be used by parties who have been given permission.</p>
+<h2>Manual Burn Feature</h2>
+<p>Users can burn tokens manually using the burn(amount) function, which will reduce the total supply.</p>
+<h2>Withdraw Funds (Ether)</h2>
+<p>Functions to return eher that was sent incorrectly to the contract and returned to ownership rights. Owners can withdraw the Ether balance in the contract by using the withdrawEther function, to send it back to addresses that mistakenly sent Ether to the contact.</p>
+<h2>Conclusion</h2>
+<p><strong>This contract has key features such as:</strong> <br><br> + ERC20 standard (transfer, approve, allowance). <br><br> + Burning 1% every transfer to reduce supply. <br><br> + The public can mint tokens freely. <br><br> + Maximum supply limit (10 billion DOGER). <br><br> + Transfer and Burn. (1% Burn per Transfer): <br><br> + Each transfer, 1% of the transaction amount will be burned (BURN_PERCENTAGE = 1). <br><br> + Users can burn tokens manually. <br><br> This is especially suitable for token systems that maintain a deflation mechanism (by burning).</p>
 </div>
 
     <script src="scriptjs"></script>
