@@ -9,6 +9,30 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link href="logo.png" rel="icon">
     <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <style>
+        #wallet {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            padding: 8px;
+            background: #fff;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        button {
+            margin-top: 10px;
+            padding: 8px 15px;
+            font-size: 16px;
+            color: #fff;
+            background: #007bff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
 </head>
 <body>
 
@@ -25,7 +49,9 @@
             <h1>Free Mint Doger Token Now!</h1>
             <p>Connect your wallet and mint free tokens easily</p>
             <p><strong>DOGER Contract Address<strong></p>
-            <p><strong>0x6cB08635073dC88921c2819DAEb6A70e63abc91c</strong></p>
+            <p id="wallet">0x6cB08635073dC88921c2819DAEb6A70e63abc91c</p>
+        <br>
+        <button onclick="copyToClipboard()">Copy</button>
     </header>
 
     <!-- Wallet Connection -->
@@ -99,5 +125,16 @@
     </footer>
 
     <script src="noscript/noscript.js"></script>
+
+    <script>
+        function copyToClipboard() {
+            let walletAddress = document.getElementById("wallet").innerText;
+            navigator.clipboard.writeText(walletAddress).then(() => {
+                alert("Copied: " + walletAddress);
+            }).catch(err => {
+                console.error("Failed to copy:", err);
+            });
+        }
+    </script>
 </body>
 </html>
