@@ -97,20 +97,26 @@ if (window.ethereum) {
             return;
         }
 
-        try {
-            const mintPrice = web3.utils.toWei(MINT_PRICE, 'ether');
-            const result = await minterInstance.methods.mintToken().send({
-                from: currentAccount,
-                value: mintPrice,
-            });
+        const mintPrice = web3.utils.toWei(MINT_PRICE, 'ether');
 
-            console.log("Minting result:", result);
-            document.getElementById("status").innerText = "Minting succeeded!";
-        } catch (error) {
-            console.error("Minting error:", error);
-            document.getElementById("status").innerText = "Minting failed. Please try again.";
-        }
-    }
+try {
+    const gasLimit = await minterInstance.methods.mintToken().estimateGas({
+        from: currentAccount,
+        value: mintPrice,
+    });
+
+    const result = await minterInstance.methods.mintToken().send({
+        from: currentAccount,
+        value: mintPrice,
+        gas: gasLimit,
+    });
+
+    console.log("Minting result:", result);
+    document.getElementById("status").innerText = "Minting succeeded!";
+} catch (error) {
+    console.error("Minting error:", error);
+    document.getElementById("status").innerText = "Minting failed. Please try again.";
+}
 
 async function updateWalletInfo() {
     document.getElementById('walletAddress').textContent = currentAccount;
