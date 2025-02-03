@@ -24,7 +24,8 @@
         <div class="container">
             <h1>Free Mint Doger Token Now!</h1>
             <p>Connect your wallet and mint free tokens easily</p>
-        </div>
+            <p><strong>DOGER Contract Address<strong></p>
+            <p><strong>0x6cB08635073dC88921c2819DAEb6A70e63abc91c</strong></p>
     </header>
 
     <!-- Wallet Connection -->
@@ -40,7 +41,7 @@
         <div>
             <h2>Wallet Information</h2>
             <p><strong>Wallet Address:</strong> <span id="walletAddress"></span></p>
-            <p><strong>tBNB Balance:</strong> <span id="ethBalance"></span></p>
+            <p><strong>ETH Balance:</strong> <span id="ethBalance"></span></p>
             <button onclick="disconnectWallet()">Disconnect Wallet</button>
         </div>
     </section>
@@ -49,15 +50,15 @@
     <section id="wrongNetwork" style="display: none; width: min(90%, 400px); margin: auto; text-align: center; margin-bottom: 20px;">
         <div>
             <h2>Wrong Network</h2>
-            <p>You are not connected to OPBNB Testnet. Please switch networks.</p>
-            <button id="switchToOPBNBButton" onclick="switchToOPBNBNetwork()">Switch to OPBNB Testnet</button>
+            <p>You are not connected to Base. Please switch networks.</p>
+            <button id="switchToBaseButton" onclick="switchToBaseNetwork()">Switch to Base</button>
         </div>
     </section>
 
     <!-- Successful Network Connection -->
     <section id="correctNetwork" style="display: none; width: min(90%, 400px); margin: auto; text-align: center; margin-bottom: 20px;">
         <div>
-            <p>✅ Connected to OPBNB Testnet!</p>
+            <p>✅ Connected to Base!</p>
         </div>
     </section>
 
@@ -67,6 +68,7 @@
             <h2>Mint Tokens</h2>
             <p>Click the button below to mint 100000 tokens.</p>
             <button onclick="mintTokens()">Mint 100000 Tokens</button>
+            <p id="status">Waiting for minting...</p>
         </div>
     </section>
 
