@@ -148,7 +148,7 @@ footer {
     text-align: center;
     padding: 20px;
     margin-top: 50px;
-    width: 100%;
+    width: auto;
     border-radius: 12px 12px 0 0;
     box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
 }
