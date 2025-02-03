@@ -26,9 +26,10 @@
             <h1>Free Mint Doger Token Now!</h1>
             <p>Connect your wallet and mint free tokens easily</p>
             <p><strong>DOGER Contract Address<strong></p>
-            <p id="wallet">0x6cB08635073dC88921c2819DAEb6A70e63abc91c</p>
+            <p id="wallet" onclick="copyToClipboard()">0x6cB0...c91c</p>
         <br>
         <button onclick="copyToClipboard()">Copy</button>
+            </div>
     </header>
 
     <!-- Wallet Connection -->
@@ -105,9 +106,9 @@
 
     <script>
         function copyToClipboard() {
-            let walletAddress = document.getElementById("wallet").innerText;
-            navigator.clipboard.writeText(walletAddress).then(() => {
-                alert("Copied: " + walletAddress);
+            let fullAddress = "0x6cB08635073dC88921c2819DAEb6A70e63abc91c";
+            navigator.clipboard.writeText(fullAddress).then(() => {
+                alert("Copied: " + fullAddress);
             }).catch(err => {
                 console.error("Failed to copy:", err);
             });
