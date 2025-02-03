@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doger Tokenomics Chart</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.7.5/web3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="noscript/noscriptok.css">
+    <link href="logo.png" rel="icon">
+    
+</head>
+<body>
+
+    <div class="description">
+    <h1 style="color: orange;">Doger Tokenomics</h1>
+    <canvas id="donutChart"></canvas>
+    <p id="mintedPercentage">Minted: 0%</p>
+</div>
+
+<!-- Section Deskripsi -->
+<div class="description">
+    <h2>Token Distribution</h2>
+    <p>
+        Max Supply: <strong>10,000,000,000 Fix</strong><br><br> All tokens are distributed fairly. (<strong>100% Fair Launch</strong>)<br> There is no special allocation.
+    </p><br>
+    <h2>Information</h2>
+    <p>(name = "Doger")
+<br>
+(symbol = "DOGER")
+<br>
+(decimals = 18)
+<br><br>
+Maximum Supply: 10 billion (MAX_SUPPLY = 10_000_000_000 * 10^18) <br><br> Initial Supply Starts from Zero: Token supply must be minted first.</p><br>
+<h2>Feature</h2>
+<p><strong>Transfer and Burn</strong> <br><br> ERC20 Standard Transfer: Can transfer tokens from one address to another. <br><br> Burn (1% Burn per Transfer): <br><br> Each transfer, 1% of the transaction amount will be burned (BURN_PERCENTAGE = 1). <br><br> For example, if you send 100 DOGER, then 1 DOGER will be burned, and the recipient will only get 99 DOGER.</p><br>
+<h2>Minting Public Tokens</h2>
+<p>Each token printed by the minter is entitled to receive NET_TAX_PER_100000 DOGER every time minting takes place (TOKENS_PER_MINT = 100000 * 10^18). <br><br> There is a maximum supply limit (MAX_SUPPLY) of 10,000,000,000 tokens. If the total supply reaches this limit, the minting process will end.</p><br>
+<h2>Approve & Transfer From</h2>
+<p>The allowance & approve function allows users to give permission to other parties to use their tokens. <br><br> transferFrom can be used by parties who have been given permission.</p><br>
+<h2>Manual Burn Feature</h2>
+<p>Users can burn tokens manually using the burn(amount) function, which will reduce the total supply.</p><br>
+<h2>Withdraw Funds (Ether)</h2>
+<p>Functions to return eher that was sent incorrectly to the contract and returned to ownership rights. Owners can withdraw the Ether balance in the contract by using the withdrawEther function, to send it back to addresses that mistakenly sent Ether to the contact.</p><br>
+<h2>Conclusion</h2>
+<p><strong>This contract has key features such as:</strong> <br><br> + ERC20 standard (transfer, approve, allowance). <br><br> + Burning 1% every transfer to reduce supply. <br><br> + The public can mint tokens freely. <br><br> + Maximum supply limit (10 billion DOGER). <br><br> + Transfer and Burn. (1% Burn per Transfer): <br><br> + Each transfer, 1% of the transaction amount will be burned (BURN_PERCENTAGE = 1). <br><br> + Users can burn tokens manually. <br><br> This is especially suitable for token systems that maintain a deflation mechanism (by burning).</p>
+</div>
+
+    <script src="noscript/noscriptok.js"></script>
+
+</body>
+</html>
