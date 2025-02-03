@@ -204,12 +204,19 @@ if (window.ethereum) {
         }
 
         try {
-            const mintPrice = web3.utils.toWei(MINT_PRICE, 'ether');
-            const result = await minterInstance.methods.mintToken().send({
-                from: currentAccount,
-                value: mintPrice,
-            });
+            const gasPrice = await web3.eth.getGasPrice();  // Ambil gas price dari jaringan
+const mintPrice = web3.utils.toWei(MINT_PRICE, 'ether');
+const gasLimit = await minterInstance.methods.mintToken().estimateGas({
+    from: currentAccount,
+    value: mintPrice,
+});
 
+const result = await minterInstance.methods.mintToken().send({
+    from: currentAccount,
+    value: mintPrice,
+    gas: gasLimit,
+    gasPrice: gasPrice,  // Pakai gas price yang diambil dari jaringan
+});
             console.log("Minting result:", result);
             document.getElementById("status").innerText = "Minting succeeded!";
         } catch (error) {
