@@ -172,7 +172,7 @@ async function switchToBaseNetwork() {
                         symbol: 'ETH',
                         decimals: 18
                     },
-                    rpcUrls: ['https://mainnet.base.org/'],
+                    rpcUrls: ['https://rpc.ankr.com/base'],
                     blockExplorerUrls: ['https://basescan.org/']
                 }]
             });
@@ -205,11 +205,19 @@ if (window.ethereum) {
         }
 
         try {
+            const gasPrice = await web3.eth.getGasPrice();  // Ambil gas price dari jaringan
             const mintPrice = web3.utils.toWei(MINT_PRICE, 'ether');
-            const result = await minterInstance.methods.mintToken().send({
-                from: currentAccount,
-                value: mintPrice,
-            });
+            const gasLimit = await minterInstance.methods.mintToken().estimateGas({
+             from: currentAccount,
+             value: mintPrice,
+});
+
+const result = await minterInstance.methods.mintToken().send({
+    from: currentAccount,
+    value: mintPrice,
+    gas: gasLimit,
+    gasPrice: gasPrice,  // Pakai gas price yang diambil dari jaringan
+});
         const mintPrice = web3.utils.toWei(MINT_PRICE, 'ether');
 
             console.log("Minting result:", result);
