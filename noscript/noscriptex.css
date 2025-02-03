@@ -1,0 +1,82 @@
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color:
+        color: #fff;
+    }
+
+    h1 {
+        text-align: center;
+        color: #FFAB36;
+    }
+
+    .event {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 15px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .event p {
+        margin: 5px 0;
+        font-size: 14px;
+    }
+
+    .event a {
+        color: #007BFF;
+        text-decoration: none;
+    }
+
+    .event a:hover {
+        text-decoration: underline;
+    }
+
+    hr {
+        border: 0;
+        border-top: 1px solid #ddd;
+        margin: 20px 0;
+    }
+
+    .pagination {
+        text-align: center;
+        margin: 20px 0;
+    }
+
+    .pagination a {
+        display: inline-block;
+        margin: 0 5px;
+        padding: 8px 12px;
+        font-size: 14px;
+        color: #007BFF;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .pagination a.active {
+        font-weight: bold;
+        color: #fff;
+        background-color: #007BFF;
+        border-color: #007BFF;
+    }
+
+    .pagination a:hover {
+        background-color: #0056b3;
+        color: #fff;
+    }
+
+    /* Responsive design */
+    @media (max-width: 600px) {
+        .event p {
+            font-size: 12px;
+        }
+
+        .pagination a {
+            padding: 6px 8px;
+            font-size: 12px;
+        }
+    }
