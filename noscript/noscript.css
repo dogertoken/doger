@@ -1,0 +1,204 @@
+/* ========== Global Style ========== */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    background-color: #222; /* Hitam cerah */
+    color: #e5e5e5;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ========== Navbar ========== */
+nav {
+    background: rgba(30, 58, 138, 0.8); /* Biru navy transparan */
+    backdrop-filter: blur(10px);
+    color: white;
+    padding: 12px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    transition: background 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Tambahkan efek saat scroll */
+nav.scrolled {
+    background: rgba(30, 58, 138, 1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Kontainer agar isi navbar tidak melebar ke samping */
+.nav-container {
+    width: 90%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+}
+
+/* Logo */
+.logo {
+    font-size: 1.7rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Efek hover pada logo */
+.logo:hover {
+    transform: scale(1.1);
+}
+
+/* Menu */
+.nav-menu {
+    display: flex;
+    gap: 20px; /* Jarak antar menu */
+}
+
+.nav-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 8px 12px;
+    transition: 0.3s ease-in-out;
+    border-radius: 8px;
+}
+
+/* Efek hover */
+.nav-menu a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.3);
+}
+
+/* ========== Hero Section ========== */
+#hero {
+    text-align: center;
+    padding: 160px 20px 70px; /* Tambahkan padding-top agar tidak tertutup navbar */
+    width: 80%;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4));
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Efek Animasi */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#hero h1 {
+    color: #ff7f00;
+    font-size: 3rem;
+    text-shadow: 3px 3px 10px rgba(255, 127, 0, 0.6);
+}
+
+/* ========== Button ========== */
+button {
+    background: linear-gradient(135deg, #ff7f00, #ff5722);
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(255, 127, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efek button */
+button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: all 0.4s;
+}
+
+button:hover::before {
+    left: 100%;
+}
+
+button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(255, 127, 0, 0.6);
+}
+
+/* ========== Footer ========== */
+footer {
+    background: rgba(30, 58, 138, 0.9);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+    width: 100%;
+    border-radius: 12px 12px 0 0;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* ========== Responsif ========== */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .nav-container {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+    }
+
+    .nav-menu {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .nav-menu a {
+        display: block;
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    #hero {
+        padding: 180px 15px 50px; /* Tambah lebih banyak padding-top */
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    button {
+        width: 100%;
+    }
+}
