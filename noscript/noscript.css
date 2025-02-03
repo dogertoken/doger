@@ -5,7 +5,7 @@ html {
 
 body {
     font-family: 'Poppins', Arial, sans-serif;
-    background-color: #222; /* Hitam cerah */
+    background-color: #222;
     color: #e5e5e5;
     margin: 0;
     padding: 0;
@@ -16,7 +16,7 @@ body {
 
 /* ========== Navbar ========== */
 nav {
-    background: rgba(30, 58, 138, 0.8); /* Biru navy transparan */
+    background: rgba(30, 58, 138, 0.8);
     backdrop-filter: blur(10px);
     color: white;
     padding: 12px 20px;
@@ -32,13 +32,11 @@ nav {
     transition: background 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-/* Tambahkan efek saat scroll */
 nav.scrolled {
     background: rgba(30, 58, 138, 1);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
 }
 
-/* Kontainer agar isi navbar tidak melebar ke samping */
 .nav-container {
     width: 90%;
     max-width: 1200px;
@@ -48,7 +46,6 @@ nav.scrolled {
     margin: auto;
 }
 
-/* Logo */
 .logo {
     font-size: 1.7rem;
     font-weight: bold;
@@ -56,12 +53,10 @@ nav.scrolled {
     transition: transform 0.3s ease-in-out;
 }
 
-/* Efek hover pada logo */
 .logo:hover {
     transform: scale(1.1);
 }
 
-/* Menu */
 .nav-menu {
     display: flex;
     gap: 20px; /* Jarak antar menu */
@@ -76,7 +71,6 @@ nav.scrolled {
     border-radius: 8px;
 }
 
-/* Efek hover */
 .nav-menu a:hover {
     background: rgba(255, 255, 255, 0.2);
     box-shadow: 0 4px 8px rgba(255, 255, 255, 0.3);
@@ -85,7 +79,7 @@ nav.scrolled {
 /* ========== Hero Section ========== */
 #hero {
     text-align: center;
-    padding: 160px 20px 70px; /* Tambahkan padding-top agar tidak tertutup navbar */
+    padding: 160px 20px 70px;
     width: 80%;
     background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4));
     border-radius: 20px;
@@ -93,7 +87,7 @@ nav.scrolled {
     animation: fadeIn 1s ease-in-out;
 }
 
-/* Efek Animasi */
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -127,7 +121,6 @@ button {
     overflow: hidden;
 }
 
-/* Efek button */
 button::before {
     content: "";
     position: absolute;
@@ -191,7 +184,7 @@ footer {
     }
 
     #hero {
-        padding: 180px 15px 50px; /* Tambah lebih banyak padding-top */
+        padding: 180px 15px 50px;
     }
 
     h1 {
