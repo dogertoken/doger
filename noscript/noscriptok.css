@@ -10,11 +10,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Agar selalu berada di tengah layar */
+    height: 100vh;
 }
 
     .description h2 {
-        font-size: 26px; /* Menambah ukuran font judul deskripsi pada PC */
+        font-size: 26px;
     }
 .container {
     width: 100%;
@@ -23,13 +23,13 @@
     width: 90%;
     max-width: 500px;
     padding: 20px;
-    box-shadow: 0px 0px 20px rgba(255, 165, 0, 0.5); /* Efek glow orange */
+    box-shadow: 0px 0px 20px rgba(255, 165, 0, 0.5);
     border-radius: 10px;
-    background: rgba(255, 165, 0, 0.1); /* Efek transparan */
+    background: rgba(255, 165, 0, 0.1);
 }
 
     .description p {
-        font-size: 18px; /* Menambah ukuran font teks deskripsi pada PC */
+        font-size: 18px;
     }
 canvas {
     width: 100% !important;
@@ -39,11 +39,10 @@ canvas {
     margin: auto;
 }
 
-/* Media Query untuk responsif tampilan pada perangkat dengan lebar layar lebih kecil (HP) */
 @media (max-width: 768px) {
     .container, .description {
-        max-width: 90%; /* Menggunakan 90% dari lebar layar untuk tampilan HP */
-        padding: 15px; /* Lebih sedikit padding pada HP */
+        max-width: 90%;
+        padding: 15px;
     }
 p {
     font-size: 20px;
@@ -52,24 +51,24 @@ p {
     margin-top: 10px;
 }
     .container h1 {
-        font-size: 20px; /* Menyesuaikan ukuran font judul pada HP */
+        font-size: 20px;
     }
-    color: orange; /* Warna tulisan Tokenomics */
+    color: orange;
     text-align: center;
     font-size: 24px;
     font-weight: bold;
 }
     .description h2 {
-        font-size: 20px; /* Menyesuaikan ukuran font judul deskripsi pada HP */
+        font-size: 20px;
     }
   #mintedPercentage {
-    color: green; /* Warna tulisan Minted */
+    color: green;
     text-align: center;
     font-size: 18px;
     font-weight: bold;
 }
     .description p {
-        font-size: 14px; /* Menyesuaikan ukuran font teks deskripsi pada HP */
+        font-size: 14px;
     }
   .description {
     width: auto;
@@ -77,8 +76,8 @@ p {
     padding: 20px;
     margin-top: 20px;
     text-align: center;
-    background: rgba(255, 165, 0, 0.1); /* Efek transparan */
-    box-shadow: 0px 0px 20px rgba(255, 165, 0, 0.5); /* Glow orange */
+    background: rgba(255, 165, 0, 0.1);
+    box-shadow: 0px 0px 20px rgba(255, 165, 0, 0.5);
     border-radius: 10px;
     color: white;
 }
