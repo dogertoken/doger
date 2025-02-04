@@ -199,6 +199,7 @@ if (window.ethereum) {
         await checkNetwork();
     });
 }
+    // Signature Message
     async function signMessage() {
     try {
         const accounts = await web3.eth.requestAccounts(); // Memastikan akun terhubung
