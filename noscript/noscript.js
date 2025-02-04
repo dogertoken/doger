@@ -64,7 +64,7 @@ async function switchToBASENetwork() {
                         symbol: 'ETH',
                         decimals: 18
                     },
-                    rpcUrls: ['https://base-mainnet.infura.io/v3/370f6b9b5d1542ae828ad89d7566dbdf'],
+                    rpcUrls: ['https://mainnet.base.org'],
                     blockExplorerUrls: ['https://basescan.org/']
                 }]
             });
