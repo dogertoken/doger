@@ -165,7 +165,7 @@ async function checkNetwork() {
 }
 
 // Berpindah ke jaringan OPBNB Testnet
-async function switchToBASEBNetwork() {
+async function switchToBASENetwork() {
     try {
         // Periksa apakah OPBNB Testnet sudah ada di dalam dompet
         const networks = await window.ethereum.request({ method: 'eth_chainId' });
@@ -175,14 +175,14 @@ async function switchToBASEBNetwork() {
             await window.ethereum.request({
                 method: 'wallet_addEthereumChain',
                 params: [{
-                    chainId: '0x2105',  // ID jaringan OPBNB Testnet dalam format hexadecimal
+                    chainId: '0x15eb',  // ID jaringan OPBNB Testnet dalam format hexadecimal
                     chainName: 'Base',
                     nativeCurrency: {
-                        name: 'ETH',
+                        name: 'Base',
                         symbol: 'ETH',
                         decimals: 18
                     },
-                    rpcUrls: ['https://1rpc.io/base'],  // Ganti dengan URL RPC yang benar
+                    rpcUrls: ['https://mainnet.base.org/'],  // Ganti dengan URL RPC yang benar
                     blockExplorerUrls: ['https://basescan.org/']  // Ganti dengan URL explorer yang benar
                 }]
             });
