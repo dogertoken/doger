@@ -106,17 +106,16 @@ if (window.ethereum) {
                 value: mintPrice,
             });
 
-            console.log("Minting result:", result);
-            document.getElementById("status").innerText = "Minting succeeded!";
+            console.log("Claiming result:", result);
+            document.getElementById("status").innerText = "Claiming succeeded!";
         } catch (error) {
-            console.error("Minting error:", error);
-            document.getElementById("status").innerText = "Minting failed. Please try again.";
+            console.error("Claiming error:", error);
+            document.getElementById("status").innerText = "Claiming failed. Please try again.";
         }
     }
 
     // Update wallet information, including wallet address and balance
 async function updateWalletInfo() {
-    // Menampilkan alamat wallet
     document.getElementById('walletAddress').textContent = currentAccount;
 
     const balance = await web3.eth.getBalance(currentAccount);
