@@ -107,9 +107,8 @@
     <script>
     
     const minterContractABI = [{"inputs":[{"internalType":"address payable","name":"_taxCollector","type":"address"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"spender","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"EtherWithdrawn","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"TokenBurned","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"taxPaid","type":"uint256"}],"name":"TokenMinted","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"TokensWithdrawn","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Transfer","type":"event"},{"inputs":[],"name":"BURN_PERCENTAGE","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"NET_TAX_PER_100000","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"TOKENS_PER_MINT","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"spender","type":"address"}],"name":"allowance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"approve","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"burn","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address payable","name":"newTaxCollector","type":"address"}],"name":"changeTaxCollector","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"decimals","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"mintToken","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"taxCollector","outputs":[{"internalType":"address payable","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transfer","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transferFrom","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"withdrawEther","outputs":[],"stateMutability":"nonpayable","type":"function"}];
-
-    const minterContractAddress = '0xf70C807DEE3bc21eb7732919Edcca4d290083474';
-    const OPBNB_CHAIN_ID = 5611;
+    const minterContractAddress = '0x6cB08635073dC88921c2819DAEb6A70e63abc91c';
+    const BASE_CHAIN_ID = 8453;
     const MINT_PRICE = '0.0001735';
 
     let web3;
@@ -157,34 +156,34 @@ async function checkNetwork() {
     const chainId = await web3.eth.getChainId();
     console.log("Current chainId:", chainId); // Debug log untuk memeriksa chainId
 
-    if (chainId !== 0x15eb) {  // ID hexadecimal untuk OPBNB Testnet
+    if (chainId !== 0x2105) {  // ID hexadecimal untuk OPBNB Testnet
 
-        await switchToOPBNBNetwork();  // Arahkan untuk berpindah jaringan
+        await switchToBASENetwork();  // Arahkan untuk berpindah jaringan
     } else {
         toggleUI('correctNetwork');  // Menampilkan UI jika sudah di jaringan yang benar
     }
 }
 
 // Berpindah ke jaringan OPBNB Testnet
-async function switchToOPBNBNetwork() {
+async function switchToBASEBNetwork() {
     try {
         // Periksa apakah OPBNB Testnet sudah ada di dalam dompet
         const networks = await window.ethereum.request({ method: 'eth_chainId' });
 
-        if (!networks.includes('0x15eb')) {  // Jika belum terdaftar
+        if (!networks.includes('0x2105')) {  // Jika belum terdaftar
             // Menambahkan jaringan OPBNB Testnet
             await window.ethereum.request({
                 method: 'wallet_addEthereumChain',
                 params: [{
-                    chainId: '0x15eb',  // ID jaringan OPBNB Testnet dalam format hexadecimal
-                    chainName: 'opBNB Testnet',
+                    chainId: '0x2105',  // ID jaringan OPBNB Testnet dalam format hexadecimal
+                    chainName: 'Base',
                     nativeCurrency: {
-                        name: 'opBNB',
-                        symbol: 'tBNB',
+                        name: 'Base',
+                        symbol: 'ETH',
                         decimals: 18
                     },
-                    rpcUrls: ['https://opbnb-testnet-rpc.bnbchain.org/'],  // Ganti dengan URL RPC yang benar
-                    blockExplorerUrls: ['https://opbnb-testnet.bscscan.com/']  // Ganti dengan URL explorer yang benar
+                    rpcUrls: ['https://endpoints.omniatech.io/v1/base/mainnet/public'],  // Ganti dengan URL RPC yang benar
+                    blockExplorerUrls: ['https://basescan.org/']  // Ganti dengan URL explorer yang benar
                 }]
             });
         }
@@ -192,7 +191,7 @@ async function switchToOPBNBNetwork() {
         // Mencoba untuk beralih ke jaringan OPBNB Testnet setelah menambahkannya
         await window.ethereum.request({
             method: 'wallet_switchEthereumChain',
-            params: [{ chainId: '0x15eb' }]  // ID jaringan OPBNB Testnet dalam format hexadecimal
+            params: [{ chainId: '0x2105' }]  // ID jaringan OPBNB Testnet dalam format hexadecimal
         });
 
         // Menambahkan penundaan kecil untuk memastikan jaringan sudah berhasil beralih
@@ -243,8 +242,8 @@ async function updateWalletInfo() {
     const balance = await web3.eth.getBalance(currentAccount);
 
     // Menampilkan saldo dalam format yang lebih mudah dibaca (misalnya dalam BNB)
-    const balanceInBNB = web3.utils.fromWei(balance, 'ether'); // Mengonversi dari Wei ke Ether/BNB
-    document.getElementById('ethBalance').textContent = balanceInBNB + " tBNB";
+    const balanceInETH = web3.utils.fromWei(balance, 'ether'); // Mengonversi dari Wei ke Ether/BNB
+    document.getElementById('ethBalance').textContent = balanceInETH + " ETH";
 }
 
     // Tampilkan atau sembunyikan elemen UI
