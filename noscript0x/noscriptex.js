@@ -62,7 +62,7 @@
 
             historyContainer.innerHTML = paginatedEvents.map(event => `
                 <div class="event">
-                    <p><strong>Tx Id:</strong> <a href="https://base.blockscout.com/tx/${event.transactionHash}" target="_blank">${shortenTxid(event.transactionHash)}</a></p>
+                    <p><strong>Tx Id:</strong> <a href="https://basedscan.io/tx/${event.transactionHash}" target="_blank">${shortenTxid(event.transactionHash)}</a></p>
                     <p><strong>Block:</strong> ${event.blockNumber}</p>
                     <p><strong>Wallet:</strong> ${shortenAddress(event.to)}</p>
                     <p><strong>Claiming . . . . .</strong></p>
