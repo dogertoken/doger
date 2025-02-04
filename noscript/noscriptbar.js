@@ -19,7 +19,7 @@ async function getDecimals() {
       const progressPercentage = (minted / MAX_SUPPLY) * 100;
 
       document.getElementById('progressFill').style.width = progressPercentage + '%';
-      document.getElementById('progressText').innerText = `${minted.toFixed(2)} / ${MAX_SUPPLY} Tokens Minted`;
+      document.getElementById('progressText').innerText = `${minted.toFixed(2)} / ${MAX_SUPPLY} Tokens Claims`;
     } catch (error) {
       console.error("Error fetching contract data:", error);
       document.getElementById('progressText').innerText = "Error loading data";
