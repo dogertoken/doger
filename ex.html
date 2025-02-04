@@ -64,7 +64,7 @@
                 const historyContainer = document.getElementById("historyContainer");
                 historyContainer.innerHTML = currentEvents.map(event => `
                     <div class="event">
-                        <p><strong>Tx Id:</strong> <a href="https://opbnb-testnet.bscscan.com/tx/${event.transactionHash}" target="_blank">${shortenTxid(event.transactionHash)}</a></p>
+                        <p><strong>Tx Id:</strong> <a href="https://basescan.org/tx/${event.transactionHash}" target="_blank">${shortenTxid(event.transactionHash)}</a></p>
                         <p><strong>Block:</strong> ${event.blockNumber}</p>
                         <p><strong>Address:</strong> ${shortenAddress(event.to)}</p>
                         <p><strong>Minting Tokens...</strong></p>
