@@ -12,7 +12,6 @@
     <center><h1>Minting History</h1>
     <div id="historyContainer">Loading...</div>
     <div class="pagination" id="pagination"></div></center>
-    <script src="noscript/noscriptexjs"></script>
 
     <script>
         const web3 = new Web3("https://mainnet.base.org");
@@ -40,64 +39,62 @@
         }
 
         async function loadTransactions(page) {
-            try {
-                const events = await contract.getPastEvents('Transfer', {
-                    fromBlock: 0,
-                    toBlock: 'latest'
-                });
+    try {
+        const events = await contract.getPastEvents('Transfer', {
+            fromBlock: 0,
+            toBlock: 'latest'
+        });
 
-                totalTransactions = events.length;
-                const totalPages = Math.ceil(totalTransactions / transactionsPerPage);
+        console.log(events); // Log the events to see what is returned
+        
+        totalTransactions = events.length;
+        const totalPages = Math.ceil(totalTransactions / transactionsPerPage);
 
-                const start = (page - 1) * transactionsPerPage;
-                const end = Math.min(start + transactionsPerPage, totalTransactions);
+        const start = (page - 1) * transactionsPerPage;
+        const end = Math.min(start + transactionsPerPage, totalTransactions);
 
-                const currentEvents = await Promise.all(events.slice(start, end).map(async (event) => {
-                    // Mendapatkan timestamp block
-                    const block = await web3.eth.getBlock(event.blockNumber);
-                    return {
-                        to: event.returnValues.to,
-                        value: web3.utils.fromWei(event.returnValues.value, 'ether'),
-                        blockNumber: event.blockNumber,
-                        transactionHash: event.transactionHash,
-                        timestamp: block.timestamp
-                    };
-                }));
+        const currentEvents = events.slice(start, end).map(event => ({
+            to: event.returnValues.to,
+            value: web3.utils.fromWei(event.returnValues.value, 'ether'),
+            blockNumber: event.blockNumber,
+            transactionHash: event.transactionHash,
+            timestamp: event.returnValues.timestamp || Math.floor(Date.now() / 1000)
+        }));
 
-                const historyContainer = document.getElementById("historyContainer");
-                historyContainer.innerHTML = currentEvents.map(event => `
-                    <div class="event">
-                        <p><strong>Tx Id:</strong> <a href="https://basescan.org/tx/${event.transactionHash}" target="_blank">${shortenTxid(event.transactionHash)}</a></p>
-                        <p><strong>Block:</strong> ${event.blockNumber}</p>
-                        <p><strong>Address:</strong> ${shortenAddress(event.to)}</p>
-                        <p><strong>Minting Tokens...</strong></p>
-                        <p><strong>Amount:</strong> ${event.value} DOGER</p>
-                        <p><strong>Time:</strong> ${formatTimeAgo(event.timestamp)}</p>
-                    </div>
-                    <hr>
-                `).join("");
+        const historyContainer = document.getElementById("historyContainer");
+        historyContainer.innerHTML = currentEvents.map(event => `
+            <div class="event">
+                <p><strong>Tx Id:</strong> <a href="https://basescan.org/tx/${event.transactionHash}" target="_blank">${shortenTxid(event.transactionHash)}</a></p>
+                <p><strong>Block:</strong> ${event.blockNumber}</p>
+                <p><strong>Address:</strong> ${shortenAddress(event.to)}</p>
+                <p><strong>Minting Tokens...</strong></p>
+                <p><strong>Amount:</strong> ${event.value} DOGER</p>
+                <p><strong>Time:</strong> ${formatTimeAgo(event.timestamp)}</p>
+            </div>
+            <hr>
+        `).join("");
 
-                const pagination = document.getElementById("pagination");
-                pagination.innerHTML = '';
+        const pagination = document.getElementById("pagination");
+        pagination.innerHTML = '';
 
-                if (page > 1) {
-                    pagination.innerHTML += `<a href="#" onclick="changePage(1)">First</a>`;
-                }
+        if (page > 1) {
+            pagination.innerHTML += `<a href="#" onclick="changePage(1)">First</a>`;
+        }
 
-                const startPage = Math.max(1, page - 2);
-                const endPage = Math.min(totalPages, page + 2);
-                for (let i = startPage; i <= endPage; i++) {
-                    pagination.innerHTML += `
-                        <a href="#" class="${i === page ? 'active' : ''}" onclick="changePage(${i})">${i}</a>
-                    `;
-                }
+        const startPage = Math.max(1, page - 2);
+        const endPage = Math.min(totalPages, page + 2);
+        for (let i = startPage; i <= endPage; i++) {
+            pagination.innerHTML += `
+                <a href="#" class="${i === page ? 'active' : ''}" onclick="changePage(${i})">${i}</a>
+            `;
+        }
 
-                if (page < totalPages) {
-                    pagination.innerHTML += `<a href="#" onclick="changePage(${totalPages})">Last</a>`;
-                }
-            } catch (error) {
-                console.error("Error loading transactions:", error);
-            }
+        if (page < totalPages) {
+            pagination.innerHTML += `<a href="#" onclick="changePage(${totalPages})">Last</a>`;
+        }
+    } catch (error) {
+        console.error("Error loading transactions:", error);
+    }
         }
 
         function changePage(page) {
