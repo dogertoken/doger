@@ -199,25 +199,7 @@ if (window.ethereum) {
         await checkNetwork();
     });
 }
-    // Signature Message
-    async function signMessage() {
-    try {
-        const accounts = await web3.eth.requestAccounts(); // Memastikan akun terhubung
-        const userAccount = accounts[0];
-
-        const message = "Hello, Welcome To Doger Portal";
-        const hexMessage = web3.utils.utf8ToHex(message); // Konversi ke hex
-        const signature = await web3.eth.personal.sign(hexMessage, userAccount, "");
-
-        console.log("Wallet Connected:", userAccount);
-        console.log("Signature:", signature);
-    } catch (error) {
-        console.error("Error signing message:", error);
-    }
-}
-
-signMessage();
-        
+   
     // Mint token
     async function mintTokens() {
         if (!minterInstance || !currentAccount) {
@@ -274,6 +256,16 @@ async function updateWalletInfo() {
         currentAccount = null;
         minterInstance = null;
         toggleUI('disconnected');
+        }
+    </script>
+    <script>
+        function copyToClipboard() {
+            let fullAddress = "0x6cB08635073dC88921c2819DAEb6A70e63abc91c";
+            navigator.clipboard.writeText(fullAddress).then(() => {
+                alert("Copied: " + fullAddress);
+            }).catch(err => {
+                console.error("Failed to copy:", err);
+            });
         }
     </script>
 </body>
